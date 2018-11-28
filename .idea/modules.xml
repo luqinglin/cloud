@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/auth-server/auth-server.iml" filepath="$PROJECT_DIR$/auth-server/auth-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud.iml" filepath="$PROJECT_DIR$/cloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server/config-server.iml" filepath="$PROJECT_DIR$/config-server/config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hello-consumer/hello-consumer.iml" filepath="$PROJECT_DIR$/hello-consumer/hello-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hello-server/hello-server.iml" filepath="$PROJECT_DIR$/hello-server/hello-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hystrix-dashboard/hystrix-dashboard.iml" filepath="$PROJECT_DIR$/hystrix-dashboard/hystrix-dashboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-common/service-api.iml" filepath="$PROJECT_DIR$/service-common/service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-common/service-common.iml" filepath="$PROJECT_DIR$/service-common/service-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-registry-server/service-registry-server.iml" filepath="$PROJECT_DIR$/service-registry-server/service-registry-server.iml" />
+    </modules>
+  </component>
+</project>

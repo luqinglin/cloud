@@ -1,0 +1,17 @@
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://admin:123456@peer2:2222/eureka
+spring:
+  application:
+    name: service-registry-server
+  security:
+    user:
+      name: admin
+      password: 123456
+server:
+  port: 1111
