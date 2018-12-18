@@ -19,8 +19,6 @@ public class TestRestful implements ServiceApi {
 
     @Override
     public String home(String username,String passwd){
-      //  System.out.println(username);
-        //System.out.println(passwd);
         String s = "{\"id\":"+form+"}";
         return s;
     }
