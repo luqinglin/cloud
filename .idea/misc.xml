@@ -18,11 +18,16 @@
         <option value="$PROJECT_DIR$/hello-server/pom.xml" />
         <option value="$PROJECT_DIR$/hystrix-dashboard/pom.xml" />
         <option value="$PROJECT_DIR$/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/zipkin-ser/pom.xml" />
+        <option value="$PROJECT_DIR$/zipkin-stream-server/pom.xml" />
+        <option value="$PROJECT_DIR$/test/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot2-mybatis-demo-master/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/eurekaserver/pom.xml" />
+        <option value="$PROJECT_DIR$/zipkin-cli/pom.xml" />
       </set>
     </option>
   </component>

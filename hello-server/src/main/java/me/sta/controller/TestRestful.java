@@ -1,19 +1,26 @@
 package me.sta.controller;
 
 import me.sta.helloservice.ServiceApi;
+import me.sta.service.TestService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RefreshScope
 public class TestRestful implements ServiceApi {
 
     @Value("${form}")
     private String form;
 
+    @Autowired
+    private TestService testService;
+
     @Override
     public String home(String username,String passwd){
-        System.out.println(username);
-        System.out.println(passwd);
+      //  System.out.println(username);
+        //System.out.println(passwd);
         String s = "{\"id\":"+form+"}";
         return s;
     }
@@ -24,4 +31,11 @@ public class TestRestful implements ServiceApi {
         String s = "{\"id\":1}";
         return s;
     }
+
+    @Override
+    public int save(String name) {
+        return testService.save(name);
+    }
+
+
 }

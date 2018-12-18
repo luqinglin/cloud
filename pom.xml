@@ -10,12 +10,13 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>service-common</module>
-    <module>service-registry-server</module>
     <module>hello-server</module>
     <module>hello-consumer</module>
-    <module>auth-server</module>
+    <!--base-->
+    <module>service-common</module>
+    <module>service-registry-server</module>
     <module>config-server</module>
+    <module>tx-manager</module>
   </modules>
 
   <name>cloud</name>
@@ -25,6 +26,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
     <spring-cloud.version>Finchley.SR1</spring-cloud.version>
+    <lcn.last.version>4.2.0</lcn.last.version>
   </properties>
 
   <parent>
@@ -48,6 +50,7 @@
   </dependencyManagement>
 
   <dependencies>
+
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-config</artifactId>
@@ -56,7 +59,6 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
