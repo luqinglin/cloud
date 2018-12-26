@@ -1,9 +1,9 @@
-package me.sta.provide;
+package me.sta.service.impl;
 
 import com.codingapi.tx.annotation.TxTransaction;
 import me.sta.dao.TestMapper;
 import me.sta.entity.Test;
-import me.sta.service.HelloService;
+import me.sta.client.HelloService;
 import me.sta.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
 package me.sta.controller;
 
-import me.sta.service.HelloService;
+import me.sta.client.HelloService;
 import me.sta.service.IMessageProvider;
 import me.sta.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;

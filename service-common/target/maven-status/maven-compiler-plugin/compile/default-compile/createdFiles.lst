@@ -1,5 +1,3 @@
-com/codingapi/tx/config/ConfigReader.class
 me/sta/exception/ApplicationCode.class
 me/sta/exception/SystemException.class
-com/codingapi/tx/config/ConfigReader$1.class
 me/sta/helloservice/ServiceApi.class

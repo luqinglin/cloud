@@ -1,4 +1,4 @@
-package me.sta.provide;
+package me.sta.service.impl;
 
 import me.sta.service.IMessageProvider;
 import me.sta.service.SinkSender;
