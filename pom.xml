@@ -10,8 +10,6 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>hello-server</module>
-    <module>hello-consumer</module>
     <!--base-->
     <module>service-common</module>
     <module>service-registry-server</module>
@@ -19,6 +17,8 @@
     <module>tx-manager</module>
     <module>service-db</module>
     <!--base-->
+    <module>hello-server</module>
+    <module>hello-consumer</module>
   </modules>
 
   <name>cloud</name>

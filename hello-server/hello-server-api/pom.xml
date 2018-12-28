@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<parent>
-		<groupId>me.sta</groupId>
-		<artifactId>cloud</artifactId>
-		<version>1.0</version>
-	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>me.sta</groupId>
+		<artifactId>hello-server</artifactId>
+		<version>1.0</version>
+	</parent>
 
-	<artifactId>hello-server</artifactId>
-	<packaging>pom</packaging>
-	<modules>
-		<module>hello-server-api</module>
-		<module>hello-server-entity</module>
-		<module>hello-server-provider</module>
-	</modules>
+	<artifactId>hello-server-api</artifactId>
+	<packaging>jar</packaging>
 
-
+	<dependencies>
+		<dependency>
+			<groupId>me.sta</groupId>
+			<artifactId>hello-server-entity</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
 
 </project>

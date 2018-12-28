@@ -5,21 +5,20 @@
 
 	<parent>
 		<groupId>me.sta</groupId>
-		<artifactId>cloud</artifactId>
+		<artifactId>hello-server</artifactId>
 		<version>1.0</version>
 	</parent>
 
-	<groupId>me.sta</groupId>
-	<artifactId>hello-consumer</artifactId>
-	<version>1.0</version>
+	<artifactId>hello-server-provider</artifactId>
 	<packaging>jar</packaging>
 
-	<name>hello-consumer</name>
-	<description>Demo project for Spring Boot</description>
-
-
-
 	<dependencies>
+
+		<dependency>
+			<groupId>me.sta</groupId>
+			<artifactId>hello-server-api</artifactId>
+			<version>1.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -28,18 +27,7 @@
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>me.sta</groupId>
-			<artifactId>hello-server-api</artifactId>
-			<version>1.0</version>
 		</dependency>
 
 		<dependency>

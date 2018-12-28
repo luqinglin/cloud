@@ -1,7 +1,6 @@
 package me.sta.dao;
 
 import me.sta.entity.Test;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * Created by luqingling on 2018/12/13.
