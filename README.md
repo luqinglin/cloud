@@ -17,7 +17,7 @@
 
 
 **框架基础项目结构**
-* zipkin-stream-server    链路追踪服务端
+* zipkin-stream-server    调用链跟踪服务端
 * hystrix-dashboard    熔断仪表盘
 * service-registry-server    服务注册中心
 * tx-manager    分布式事务管理器(LCN)
@@ -65,6 +65,12 @@
     #redis主机端口
     spring.redis.port=6379
     ```
+* zipkin-stream-server调用链跟踪服务数据持久化使用的是mysql数据库，建表语句参考zipkin-stream-server项目下create.sql
+
+* 分布式事务测试表，需要创建两个数据库,分别配置到hello-server-provider、hello-consumer，建表语句参考LCN-test.sql
+  数据库配置则参考config-center配置中心
+  
+  
  *项目启动顺序*
  （伪代码）
  
