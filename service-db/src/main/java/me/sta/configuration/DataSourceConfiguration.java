@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
+@Primary
 public class DataSourceConfiguration {
     @Bean(name = "masterSource")
     @Primary
@@ -27,6 +28,27 @@ public class DataSourceConfiguration {
     @ConfigurationProperties(prefix = "spring.read-datasource")
     public DataSource secondDataSource() {
         return DataSourceBuilder.create().build();
+    }
+
+    /**
+     * Sql session factory bean.
+     * Here to config datasource for SqlSessionFactory
+     * <p>
+     * You need to add @{@code @ConfigurationProperties(prefix = "mybatis")}, if you are using *.xml file,
+     * the {@code 'mybatis.type-aliases-package'} and {@code 'mybatis.mapper-locations'} should be set in
+     * {@code 'application.properties'} file, or there will appear invalid bond statement common
+     *
+     * @return the sql session factory bean
+     */
+    @Primary
+    @Bean(name="sqlSessionFactoryBean")
+    public SqlSessionFactoryBean sqlSessionFactoryBean() throws Exception{
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        // Here is very important, if don't config this, will can't switch datasource
+        // put all datasource into SqlSessionFactoryBean, then will autoconfig SqlSessionFactory
+        sqlSessionFactoryBean.setDataSource(dynamicDataSource());
+        sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:sqlMapper/*.xml"));
+        return sqlSessionFactoryBean;
     }
 
     /**
@@ -53,28 +75,6 @@ public class DataSourceConfiguration {
         DynamicDataSourceContextHolder.slaveDataSourceKeys.addAll(dataSourceMap.keySet());
         DynamicDataSourceContextHolder.slaveDataSourceKeys.remove(DataSourceKey.masterSource.name());
         return dynamicRoutingDataSource;
-    }
-
-    /**
-     * Sql session factory bean.
-     * Here to config datasource for SqlSessionFactory
-     * <p>
-     * You need to add @{@code @ConfigurationProperties(prefix = "mybatis")}, if you are using *.xml file,
-     * the {@code 'mybatis.type-aliases-package'} and {@code 'mybatis.mapper-locations'} should be set in
-     * {@code 'application.properties'} file, or there will appear invalid bond statement common
-     *
-     * @return the sql session factory bean
-     */
-    @Bean
-    @Primary
-    @ConfigurationProperties(prefix = "mybatis")
-    public SqlSessionFactoryBean sqlSessionFactoryBean() throws Exception{
-        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-        // Here is very important, if don't config this, will can't switch datasource
-        // put all datasource into SqlSessionFactoryBean, then will autoconfig SqlSessionFactory
-        sqlSessionFactoryBean.setDataSource(dynamicDataSource());
-        sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:sqlMapper/*.xml"));
-        return sqlSessionFactoryBean;
     }
 
     /**
