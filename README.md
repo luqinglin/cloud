@@ -104,8 +104,8 @@ jar -jar me.sta.HystrixDashboardApplication
  *业务实例代码*
 1. 启动服务提供者
  ```
- jar -jar me.sta.HelloServerApplication --server.port=10086 --spring.profiles.active=dev --spring.cloud.config.profile=dev
- jar -jar me.sta.HelloServerApplication --server.port=10087 --spring.profiles.active=dev --spring.cloud.config.profile=dev
+ jar -jar me.sta.HelloServerApplication --server.port=10086 --spring.profiles.active=dev,ms 
+ jar -jar me.sta.HelloServerApplication --server.port=10087 --spring.profiles.active=dev,ms 
  ``` 
 2. 启动服务消费者
  ```

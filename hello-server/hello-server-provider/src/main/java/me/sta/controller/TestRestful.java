@@ -13,13 +13,14 @@ public class TestRestful implements ServiceApi {
 
     @Value("${form}")
     private String form;
-
+    @Value("${form1}")
+    private String form1;
     @Autowired
     private TestService testService;
 
     @Override
     public String home(String username,String passwd){
-        String s = "{\"id\":"+form+"}";
+        String s = "{\"id\":"+form+",\"form1\":"+form1+"}";
         return s;
     }
     @Override

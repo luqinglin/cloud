@@ -40,8 +40,7 @@ public class DataSourceConfiguration {
      *
      * @return the sql session factory bean
      */
-    @Primary
-    @Bean(name="sqlSessionFactoryBean")
+    @Bean
     public SqlSessionFactoryBean sqlSessionFactoryBean() throws Exception{
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         // Here is very important, if don't config this, will can't switch datasource
