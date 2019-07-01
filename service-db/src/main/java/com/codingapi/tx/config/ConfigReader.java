@@ -36,11 +36,6 @@ public class ConfigReader {
 
         if(txManagerTxUrlService == null){
             txManagerTxUrlService = new TxManagerTxUrlService() {
-
-                private final String configName = "tx.properties";
-
-                private final String configKey = "url";
-
                 @Override
                 public String getTxUrl() {
                     return url;
