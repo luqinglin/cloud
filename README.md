@@ -50,7 +50,7 @@
     spring.cloud.config.server.git.username=luqinglin
     spring.cloud.config.server.git.password=luqinglin
     ```
-* 消息总线和消息驱动都采用rabbitmq
+* 消息总线和消息驱动都采用rabbitmq，消息总线刷新配置需要利用git仓库webhook 来触发
     ```
    spring.rabbitmq.host=localhost
    spring.rabbitmq.port=5672
