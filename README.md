@@ -12,22 +12,22 @@
 * 消息总线：rabbitmq
 
 
-
 *项目为使用maven构建的多模块项目*
 
 
 **框架基础项目结构**
+（端口配置详见配置文件）
 * zipkin-stream-server    调用链跟踪服务端
 * hystrix-dashboard    熔断仪表盘
 * service-registry-server    服务注册中心
 * tx-manager    分布式事务管理器(LCN)
 * config-server    配置中心服务端
 * service-common    工具包
-* service-db    数据源基础配置包
+* service-db    数据源基础配置包(分布式事务)
 * config-center 配置中心（独立于maven项目）
 
 **服务项目结构**
-
+（端口配置详见配置文件）
 * hello-server    服务端
     * hello-server-api    系统服务api模块，定义服务端与客户端api标准
     * hello-server-entity    系统服务实体模块，定义服务所需model、dto、服务状态类
