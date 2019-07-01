@@ -43,7 +43,7 @@
     127.0.0.1 peer1
     127.0.0.1 peer2
     ```
-* 配置中心需要自己搭建gitlab服务器
+* 配置中心需要自己搭建gitlab服务器   url需要根据自己仓库地址配置
     ```
     spring.cloud.config.server.git.uri=http://localhost/luqinglin/cloud.git
     spring.cloud.config.server.git.search-paths=config-center
