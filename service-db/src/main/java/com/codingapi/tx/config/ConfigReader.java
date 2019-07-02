@@ -1,6 +1,7 @@
 package com.codingapi.tx.config;
 
 import com.codingapi.tx.config.service.TxManagerTxUrlService;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class ConfigReader {
 
 
     public String getTxUrl() {
+        if (StringUtils.isEmpty(url)){
+            return null;
+        }
 
         try {
             txManagerTxUrlService =  spring.getBean(TxManagerTxUrlService.class);
