@@ -16,7 +16,7 @@ public class  RedisServerService {
     }
 
     public Long generatorKey(){
-       String key = "generatorKey:sharding";
+       String key = "shardingkey";
        return redisTemplate.opsForValue().increment(key,1);
    }
 

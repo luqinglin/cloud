@@ -1,6 +1,8 @@
 package me.sta.client.impl;
 
 import me.sta.client.HelloService;
+import me.sta.exception.ApplicationCode;
+import me.sta.exception.SystemException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +25,7 @@ public class HelloServiceImpl implements HelloService {
     @Override
     public int save(@RequestParam("name") String name,@RequestParam("userId") Integer userId) {
         System.out.println("熔断了。。。。");
-        return 0;
+        throw new SystemException(ApplicationCode.INTERNAL_SERVER_ERROR);
+        //return 0;
     }
 }

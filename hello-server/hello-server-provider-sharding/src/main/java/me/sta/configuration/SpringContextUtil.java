@@ -20,11 +20,17 @@ public class SpringContextUtil implements ApplicationContextAware {
 
     @SuppressWarnings("unchecked")
     public static <T> T getBean(String name) throws BeansException {
-        return (T) applicationContext.getBean(name);
+        Object bean = applicationContext.getBean(name);
+        if (bean == null)
+            return null;
+        return (T) bean;
     }
 
     @SuppressWarnings("unchecked")
     public static <T> T getBean(Class<?> clz) throws BeansException {
-        return (T) applicationContext.getBean(clz);
+        Object bean = applicationContext.getBean(clz);
+        if (bean == null)
+            return null;
+        return (T) bean;
     }
 }

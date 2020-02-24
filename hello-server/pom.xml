@@ -15,6 +15,7 @@
 		<module>hello-server-api</module>
 		<module>hello-server-entity</module>
 		<module>hello-server-provider</module>
+		<module>hello-server-provider-sharding</module>
 	</modules>
 
 

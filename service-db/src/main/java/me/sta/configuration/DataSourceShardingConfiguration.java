@@ -1,12 +1,12 @@
 package me.sta.configuration;
 
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.lang.Nullable;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.annotation.Resource;
@@ -14,13 +14,12 @@ import javax.sql.DataSource;
 
 @Configuration
 @Primary
-public class DataSourceConfiguration {
+@ConditionalOnProperty(prefix = "spring.shardingsphere.datasource", name = "names")
+public class DataSourceShardingConfiguration {
+
 
     @Resource
-    @Nullable
     private DataSource dataSource;
-
-
 
     /**
      * Sql session factory bean.
@@ -41,6 +40,7 @@ public class DataSourceConfiguration {
         sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:sqlMapper/*.xml"));
         return sqlSessionFactoryBean;
     }
+
 
 
     /**

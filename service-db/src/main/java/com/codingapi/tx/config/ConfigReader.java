@@ -1,21 +1,14 @@
 package com.codingapi.tx.config;
 
 import com.codingapi.tx.config.service.TxManagerTxUrlService;
-import com.codingapi.tx.netty.service.NettyService;
-import com.codingapi.tx.netty.service.impl.NettyServiceImpl;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.ThreadUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
-
-import javax.validation.constraints.NotNull;
 
 /**
  * create by lorne on 2017/11/13
