@@ -6,10 +6,11 @@
     <resultMap id="BaseResultMap" type="me.sta.entity.Test">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, name
+        id, name,user_id
     </sql>
 
 
@@ -23,8 +24,8 @@
 
     <insert id="insert" parameterType="me.sta.entity.Test"
             useGeneratedKeys="true" keyProperty="id">
-        insert into test (id, name)
-        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+        insert into test (id, name,user_id)
+        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},#{userId,jdbcType=INTEGER})
     </insert>
     <insert id="insertSelective" parameterType="me.sta.entity.Test">
         insert into test
@@ -35,6 +36,9 @@
             <if test="name != null">
                 name,
             </if>
+            <if test="userId != null">
+                user_id,
+            </if>
 
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -42,7 +46,10 @@
                 #{id,jdbcType=INTEGER},
             </if>
             <if test="name != null">
-                #{name,jdbcType=VARCHAR},
+                #{name,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
             </if>
 
         </trim>

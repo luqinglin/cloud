@@ -32,8 +32,8 @@ public class TestRestful implements ServiceApi {
     }
 
     @Override
-    public int save(String name) {
-        return testService.save(name);
+    public int save(String name,Integer userId) {
+        return testService.save(name,userId);
     }
 
 

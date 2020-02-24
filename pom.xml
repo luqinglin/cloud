@@ -29,6 +29,7 @@
     <java.version>1.8</java.version>
     <spring-cloud.version>Finchley.SR1</spring-cloud.version>
     <lcn.last.version>4.2.0</lcn.last.version>
+    <sharding.jdbc.version>3.0.0</sharding.jdbc.version>
   </properties>
 
   <parent>

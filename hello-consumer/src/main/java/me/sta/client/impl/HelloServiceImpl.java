@@ -21,7 +21,7 @@ public class HelloServiceImpl implements HelloService {
     }
 
     @Override
-    public int save(@RequestParam("name") String name) {
+    public int save(@RequestParam("name") String name,@RequestParam("userId") Integer userId) {
         System.out.println("熔断了。。。。");
         return 0;
     }

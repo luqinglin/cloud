@@ -17,5 +17,5 @@ public interface ServiceApi {
     public String home1(@RequestHeader("username") String username,@RequestHeader("passwd") String passwd);
 
     @RequestMapping(value = "/saveTest",method = RequestMethod.GET)
-    public int save(@RequestParam("name") String name);
+    public int save(@RequestParam("name") String name,@RequestParam("userId") Integer userId);
 }

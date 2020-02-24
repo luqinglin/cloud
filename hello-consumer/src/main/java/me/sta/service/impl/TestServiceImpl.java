@@ -23,14 +23,14 @@ public class TestServiceImpl implements TestService {
     @Override
     @Transactional
     @TxTransaction(isStart = true)
-    public void save(String name) {
+    public void save(String name,Integer userId) {
         System.out.println(11);
 
         Test test = new Test();
         test.setName(name);
         testMapper.insert(test);
 
-        helloService.save(name);
+        helloService.save(name,userId);
         //测试分布式事务
         // int a = 100/0;
         System.out.println(22);

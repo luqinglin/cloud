@@ -27,8 +27,8 @@ public class TestRestful {
 
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public void test(String name) {
-         testService.save(name);
+    public void test(String name,Integer userId) {
+         testService.save(name,userId);
     }
 
     @RequestMapping(value = "/feign-consumer1", method = RequestMethod.GET)

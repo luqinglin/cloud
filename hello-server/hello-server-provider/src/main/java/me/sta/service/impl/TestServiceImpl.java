@@ -19,7 +19,7 @@ public class TestServiceImpl implements TestService,ITxTransaction {
 
     @Override
     @Transactional
-    public int save(String name) {
+    public int save(String name,Integer userId) {
         //测试分布式事务
         //int a = 100/0;
         Test test = new Test();
