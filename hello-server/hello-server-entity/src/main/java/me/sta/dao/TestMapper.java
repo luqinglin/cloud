@@ -14,4 +14,6 @@ public interface TestMapper {
     int insertSelective(Test test);
 
     void deleteByPrimaryKey(Integer id);
+
+    Test findByUserIdAndId(int userId, int id);
 }

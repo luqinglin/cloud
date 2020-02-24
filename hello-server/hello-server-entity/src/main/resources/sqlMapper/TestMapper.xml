@@ -16,7 +16,10 @@
 
 
 
+    <select id="findByUserIdAndId" resultMap="BaseResultMap">
+        select * from test where id = #{id,jdbcType=BIGINT} and user_id = #{userId,jdbcType=BIGINT}
 
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from test
         where id = #{id,jdbcType=INTEGER}
