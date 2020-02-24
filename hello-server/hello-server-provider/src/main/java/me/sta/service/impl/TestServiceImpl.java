@@ -24,6 +24,7 @@ public class TestServiceImpl implements TestService,ITxTransaction {
         //int a = 100/0;
         Test test = new Test();
         test.setName(name);
+        test.setUserId(userId);
         return testMapper.insert(test);
     }
 }

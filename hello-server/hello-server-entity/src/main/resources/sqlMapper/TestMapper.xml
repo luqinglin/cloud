@@ -4,7 +4,7 @@
 
 
     <resultMap id="BaseResultMap" type="me.sta.entity.Test">
-        <id column="id" property="id" jdbcType="INTEGER"/>
+        <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="user_id" property="userId" jdbcType="INTEGER"/>
     </resultMap>
@@ -24,8 +24,8 @@
 
     <insert id="insert" parameterType="me.sta.entity.Test"
             useGeneratedKeys="true" keyProperty="id">
-        insert into test (id, name,user_id)
-        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},#{userId,jdbcType=INTEGER})
+        insert into test (name,user_id)
+        values (#{name,jdbcType=VARCHAR},#{userId,jdbcType=INTEGER})
     </insert>
     <insert id="insertSelective" parameterType="me.sta.entity.Test">
         insert into test
