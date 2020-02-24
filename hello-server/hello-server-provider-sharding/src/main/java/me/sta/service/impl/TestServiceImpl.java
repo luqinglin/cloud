@@ -25,11 +25,13 @@ public class TestServiceImpl implements TestService,ITxTransaction {
         Test test = new Test();
         test.setName(name);
         test.setUserId(userId);
-        return testMapper.insert(test);
+        int insert = testMapper.insert(test);
+        Test byUserIdAndId = testMapper.findByUserIdAndId(userId, test.getId());
+        return byUserIdAndId.getId().intValue();
     }
 
     @Override
-    public Test findByUserIdAndId(int userId, int id) {
+    public Test findByUserIdAndId(int userId, Long id) {
         return testMapper.findByUserIdAndId(userId,id);
     }
 }

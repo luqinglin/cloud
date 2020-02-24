@@ -15,5 +15,5 @@ public interface TestMapper {
 
     void deleteByPrimaryKey(Integer id);
 
-    Test findByUserIdAndId(int userId, int id);
+    Test findByUserIdAndId(int userId, Long id);
 }

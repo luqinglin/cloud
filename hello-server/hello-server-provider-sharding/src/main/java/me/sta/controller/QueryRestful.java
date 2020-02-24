@@ -20,7 +20,7 @@ public class QueryRestful {
 
     @RequestMapping(value = "/test",method = RequestMethod.GET)
     public String test(String userId,String testId){
-        Test test = testService.findByUserIdAndId(Integer.parseInt(userId),Integer.parseInt(testId));
+        Test test = testService.findByUserIdAndId(Integer.parseInt(userId),Long.parseLong(testId));
         return JSONObject.toJSONString(test);
     }
 

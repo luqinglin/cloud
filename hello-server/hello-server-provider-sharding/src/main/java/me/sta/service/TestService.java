@@ -9,5 +9,5 @@ public interface TestService {
 
     int save(String name,Integer userId);
 
-    Test findByUserIdAndId(int userId, int id);
+    Test findByUserIdAndId(int userId, Long id);
 }
