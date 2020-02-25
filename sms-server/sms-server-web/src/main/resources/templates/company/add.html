@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/headcssjs :: common_header(~{::title},~{::link})">
+    <title>添加用户</title>
+    <link>
+</head>
+<body>
+<div class="x-body">
+    <form id="addForm" class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label"><em class="require-mark">*</em>appId</label>
+            <div class="layui-input-block">
+                <input type="text" name="appid" placeholder="appId" class="layui-input" value="" required
+                       lay-verify="required" autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><em class="require-mark">*</em>appSecret</label>
+            <div class="layui-input-block">
+                <input type="text" name="appsecret" placeholder="appSecret" class="layui-input" value="" required
+                       lay-verify="required" autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">请求地址</label>
+            <div class="layui-input-block">
+                <input type="text" name="url" placeholder="请求地址" class="layui-input" value="" autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><em class="require-mark">*</em>使用接口</label>
+            <div class="layui-input-block">
+                <select id='sdkTags' name="sdktag" lay-verify="required" lay-filter="sdkTag">
+                    <option value=""></option>
+                    <option th:each="comName:${sdkTags}" value="1" th:value="${comName.tag}">
+                        [[${comName.tag}]]-[[${comName.comName}]]
+                    </option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <button class="layui-btn" lay-filter="sub" lay-submit>
+                保存
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </form>
+</div>
+</body>
+<div th:replace="common/headcssjs::js"></div>
+<script type="text/javascript">
+    layui.use(['form', 'layer'], function () {
+        // 操作对象
+        var form = layui.form
+            , layer = layui.layer
+            , $ = layui.jquery;
+
+        form.on('submit(sub)', function (data) {
+
+            util.sendAjax({
+                type: 'POST',
+                url: '/company/postAdd',
+                data: $('#addForm').serialize(),
+                loadFlag: true,
+                success: function (data) {
+                    pop_close();
+                }
+            });
+
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+
+    });
+</script>
+</html>

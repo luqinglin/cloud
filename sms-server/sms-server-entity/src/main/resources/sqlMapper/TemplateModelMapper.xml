@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.sta.sms.dao.TemplateModelMapper">
+    <resultMap id="BaseResultMap" type="me.sta.sms.pojo.TemplateModel">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="tpl_com_id" jdbcType="INTEGER" property="tplComId"/>
+        <result column="sdkTag" jdbcType="VARCHAR" property="sdktag"/>
+        <result column="tpl_no" jdbcType="VARCHAR" property="tplNo"/>
+        <result column="tpl_name" jdbcType="VARCHAR" property="tplName"/>
+        <result column="tpl_sms_header" jdbcType="VARCHAR" property="tplSmsHeader"/>
+        <result column="tpl_content" jdbcType="VARCHAR" property="tplContent"/>
+        <result column="tpl_remark" jdbcType="VARCHAR" property="tplRemark"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="createtime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, tpl_com_id, sdkTag, tpl_no, tpl_name, tpl_sms_header, tpl_content, tpl_remark,
+    status, createtime, updatetime
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sms_template
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sms_template
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="me.sta.sms.pojo.TemplateModel">
+    insert into sms_template (id, tpl_com_id, sdkTag,
+      tpl_no, tpl_name, tpl_sms_header,
+      tpl_content, tpl_remark, status,
+      createtime, updatetime)
+    values (#{id,jdbcType=INTEGER}, #{tplComId,jdbcType=INTEGER}, #{sdktag,jdbcType=VARCHAR},
+      #{tplNo,jdbcType=VARCHAR}, #{tplName,jdbcType=VARCHAR}, #{tplSmsHeader,jdbcType=VARCHAR},
+      #{tplContent,jdbcType=VARCHAR}, #{tplRemark,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+    <insert id="insertSelective" parameterType="me.sta.sms.pojo.TemplateModel">
+        insert into sms_template
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="tplComId != null">
+                tpl_com_id,
+            </if>
+            <if test="sdktag != null">
+                sdkTag,
+            </if>
+            <if test="tplNo != null">
+                tpl_no,
+            </if>
+            <if test="tplName != null">
+                tpl_name,
+            </if>
+            <if test="tplSmsHeader != null">
+                tpl_sms_header,
+            </if>
+            <if test="tplContent != null">
+                tpl_content,
+            </if>
+            <if test="tplRemark != null">
+                tpl_remark,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="createtime != null">
+                createtime,
+            </if>
+            <if test="updatetime != null">
+                updatetime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="tplComId != null">
+                #{tplComId,jdbcType=INTEGER},
+            </if>
+            <if test="sdktag != null">
+                #{sdktag,jdbcType=VARCHAR},
+            </if>
+            <if test="tplNo != null">
+                #{tplNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tplName != null">
+                #{tplName,jdbcType=VARCHAR},
+            </if>
+            <if test="tplSmsHeader != null">
+                #{tplSmsHeader,jdbcType=VARCHAR},
+            </if>
+            <if test="tplContent != null">
+                #{tplContent,jdbcType=VARCHAR},
+            </if>
+            <if test="tplRemark != null">
+                #{tplRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="me.sta.sms.pojo.TemplateModel">
+        update sms_template
+        <set>
+            <if test="tplComId != null">
+                tpl_com_id = #{tplComId,jdbcType=INTEGER},
+            </if>
+            <if test="sdktag != null">
+                sdkTag = #{sdktag,jdbcType=VARCHAR},
+            </if>
+            <if test="tplNo != null">
+                tpl_no = #{tplNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tplName != null">
+                tpl_name = #{tplName,jdbcType=VARCHAR},
+            </if>
+            <if test="tplSmsHeader != null">
+                tpl_sms_header = #{tplSmsHeader,jdbcType=VARCHAR},
+            </if>
+            <if test="tplContent != null">
+                tpl_content = #{tplContent,jdbcType=VARCHAR},
+            </if>
+            <if test="tplRemark != null">
+                tpl_remark = #{tplRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                updatetime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="me.sta.sms.pojo.TemplateModel">
+    update sms_template
+    set tpl_com_id = #{tplComId,jdbcType=INTEGER},
+      sdkTag = #{sdktag,jdbcType=VARCHAR},
+      tpl_no = #{tplNo,jdbcType=VARCHAR},
+      tpl_name = #{tplName,jdbcType=VARCHAR},
+      tpl_sms_header = #{tplSmsHeader,jdbcType=VARCHAR},
+      tpl_content = #{tplContent,jdbcType=VARCHAR},
+      tpl_remark = #{tplRemark,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <select id="findByTplNo" resultMap="BaseResultMap">
+        select *
+        from sms_template
+        where tpl_no = #{tplNo,jdbcType=VARCHAR}
+  </select>
+    <select id="findTplExist" resultMap="BaseResultMap">
+        select *
+        from sms_template
+        where status!=2
+        <if test="tplSmsHeader != null">
+            and tpl_sms_header = #{tplSmsHeader,jdbcType=VARCHAR}
+        </if>
+        <if test="tplContent != null">
+            and tpl_content = #{tplContent,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="findByPage" parameterType="me.sta.sms.pojo.TemplateModel" resultMap="BaseResultMap">
+        select *
+        from sms_template
+        where status != 2
+        <if test="tplName != null">
+            and tpl_name like concat('%',#{tplName},'%')
+        </if>
+        <if test="status != null">
+            and status = #{status,jdbcType=INTEGER}
+        </if>
+        <if test="sdktag != null">
+            and sdkTag like concat('%',#{sdktag},'%')
+        </if>
+        order by id desc
+    </select>
+
+    <select id="findByCompanyId" resultMap="BaseResultMap">
+        select *
+        from sms_template
+        where tpl_com_id = #{comId,jdbcType=VARCHAR}
+  </select>
+    <select id="findByTplNoEffect" resultMap="BaseResultMap">
+        select *
+        from sms_template
+        where tpl_no = #{tplNo,jdbcType=VARCHAR}
+        and status=1
+  </select>
+</mapper>

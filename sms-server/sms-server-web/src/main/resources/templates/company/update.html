@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/headcssjs :: common_header(~{::title},~{::link})">
+    <title>更新用户</title>
+    <link>
+</head>
+<body>
+<div class="x-body">
+    <form id="addForm" class="layui-form" action="">
+        <input type="hidden" name="id"  th:value="${company.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">公司名称</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="公司名称" class="layui-input" th:value="${company.comName}"
+                       required
+                       lay-verify="required" autocomplete="off" disabled="disabled"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">appId</label>
+            <div class="layui-input-block">
+                <input type="text" name="appid" placeholder="appId" class="layui-input" value=""
+                       th:value="${company.appid}"
+                       autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">appSecret</label>
+            <div class="layui-input-block">
+                <input type="text" name="appsecret" placeholder="appSecret" class="layui-input"
+                       th:value="${company.appsecret}"
+                       autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">接口地址</label>
+            <div class="layui-input-block">
+                <input type="text" name="url" placeholder="" class="layui-input"
+                       th:value="${company.url}"
+                       autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">标签</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="sdkTag" class="layui-input" th:value="${company.sdktag}"
+                       autocomplete="off" disabled="disabled"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">短信签名</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="短信签名" class="layui-input"
+                       th:if="${company.smsSendType == 0}" value="自己配置"
+                       autocomplete="off" disabled="disabled"/>
+                <input type="text" placeholder="短信签名" class="layui-input"
+                       th:if="${company.smsSendType == 1}" value="第三方配置"
+                       autocomplete="off" disabled="disabled"/>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <button class="layui-btn" lay-filter="sub" lay-submit>
+                保存
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </form>
+</div>
+</body>
+<div th:replace="common/headcssjs::js"></div>
+<script type="text/javascript">
+    layui.use(['form', 'layer'], function () {
+        // 操作对象
+        var form = layui.form
+            , layer = layui.layer
+            , $ = layui.jquery;
+
+        form.on('submit(sub)', function (data) {
+
+            util.sendAjax({
+                type: 'POST',
+                url: '/company/postUpdate',
+                data: $('#addForm').serialize(),
+                loadFlag: true,
+                success: function (data) {
+                    pop_close();
+                }
+            });
+
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+    });
+</script>
+</html>

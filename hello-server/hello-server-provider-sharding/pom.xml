@@ -38,7 +38,7 @@
 
 		<dependency>
 			<groupId>me.sta</groupId>
-			<artifactId>service-db</artifactId>
+			<artifactId>db-lcn</artifactId>
 			<version>1.0</version>
 		</dependency>
 

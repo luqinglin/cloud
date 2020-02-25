@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/headcssjs :: common_header(~{::title},~{::link})">
+    <title>模板详情</title>
+    <link>
+</head>
+<body>
+<div class="x-body">
+    <form id="addForm" class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">模板名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="tplName" placeholder="" class="layui-input" value="" required
+                       lay-verify="required" autocomplete="off" th:value="${tpl.tplName}"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">模板序号</label>
+            <div class="layui-input-block">
+                <input type="text" name="tplName" placeholder="" class="layui-input" value="" required
+                       lay-verify="required" autocomplete="off" th:value="${tpl.tplNo}"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item" th:if="${com.smsSendType == 0}">
+            <label class="layui-form-label">短信签名</label>
+            <div class="layui-input-block">
+                <input type="text" name="tplSmsHeader" placeholder=""
+                       class="layui-input" value="" required
+                       lay-verify="required" autocomplete="off" th:value="${tpl.tplSmsHeader}"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">模板内容</label>
+            <div class="layui-input-block">
+                <input type="text" name="tplContent" placeholder=""
+                       class="layui-input" value="" required
+                       lay-verify="required" autocomplete="off"  th:value="${tpl.tplContent}"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">标签</label>
+            <div class="layui-input-block">
+                <input type="text" name="tplContent" placeholder=""
+                       class="layui-input" value="" required
+                       th:value="${com.sdktag}"
+                       lay-verify="required" autocomplete="off"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <input type="text" name="tplRemark" placeholder=""
+                       class="layui-input" value="" required
+                       lay-verify="required" autocomplete="off" th:value="${tpl.tplRemark}"/>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<div th:replace="common/headcssjs::js"></div>
+<script type="text/javascript">
+    layui.use(['form', 'layer'], function () {
+        // 操作对象
+        var form = layui.form
+            , layer = layui.layer
+            , $ = layui.jquery;
+
+
+    });
+</script>
+</html>

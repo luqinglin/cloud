@@ -1,0 +1,101 @@
+﻿@charset "utf-8";
+/* CSS Document */
+html, body, div, span, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, em, img, ins, kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,time, mark, audio, video{margin:0;padding:0;border:0; outline:0;vertical-align:baseline;font-style: normal;}
+html,ul,li,ol,p,h1,h2,h3,h4,h5,h6,dl,dt,dd{margin:0;padding:0;}
+html{font-family:Tahoma,Arial,Roboto,”Droid Sans”,”Helvetica Neue”,”Droid Sans Fallback”,”Heiti SC”,sans-self,Microsoft YaHei;box-sizing:border-box;-webkit-font-smoothing:antialiased;text-shadow:1px 1px 1px rgba(0,0,0,0.004);}/*使字体更加清晰*/
+html,body{width: 100%;height: 100%; min-width: 320px; }/* 页面背景宽高设置 */
+body{-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }/*防止iOS系统中按钮快速点击时其他文字内容被选中*/
+*{ -webkit-overflow-scrolling: touch; overflow-scrolling: touch; }
+li{list-style:none;	}
+a{text-decoration:none; color:#333;}
+img{border:none;}
+input,button,select,textarea{outline:none; /*cursor: pointer;*/ border-radius: 0;padding: 0;}/*清除input，textarea输入框的默认样式*/
+input{ cursor: pointer;border:solid 1px rgba(0,0,0,0.1);text-indent: 1rem;}
+input[type=button],input[type=submit],input[type=file],button{ cursor: pointer; -webkit-appearance: none;border: none;text-indent:0;}
+textarea{resize:none}/*清除input，textarea输入框的默认样式*/
+/*input中placeholder颜色*/
+input::-webkit-input-placeholder { color: #b6b6b6;text-indent: 1rem; } /* WebKit browsers */
+input:-moz-placeholder { color: #b6b6b6;text-indent: 1rem; } /* Mozilla Firefox 4 to 18 */
+input::-moz-placeholder {  color: #b6b6b6;text-indent: 1rem; } /* Mozilla Firefox 19+ */
+input:-ms-input-placeholder { color: #b6b6b6;text-indent: 1rem; }/* Internet Explorer 10+ */
+.noNum::-webkit-textfield-decoration-container {background-color: #fff;}/*清除input在type=num时候的上下按钮*/
+.noNum::-webkit-inner-spin-button {-webkit-appearance: none;}/*清除input在type=num时候的上下按钮*/
+.noNum::-webkit-outer-spin-button {-webkit-appearance: none;	/* 有无看不出差别 */ }/*清除input在type=num时候的上下按钮*/
+.clearfix{zoom:1; }
+.clearfix::after{content:''; clear:both; display:table; height:0;}
+*{-webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color: transparent; /* For some Androids */  }
+.text-overflow{text-overflow:ellipsis;white-space:nowrap;overflow:hidden; }/* 字体溢出省略样式 */
+.l_NewScroll{position:absolute; overflow-y:scroll; -webkit-overflow-scrolling:  touch; top:0; left:0; bottom:0; right:0;}
+.l_lastTip{width:100%; height:2rem; text-align:center; line-height:2rem; font-size:1.2rem; color:#999; margin:1rem 0;}
+
+/* 弹框样式 */
+.swal2-modal h2{font-size: 1.2rem!important;margin: 0;padding: 0;line-height:1.5rem!important;}
+.swal2-icon{margin: 10px auto 15px auto;}
+.swal2-cancel{background: #ff5e61!important;}
+
+/*返回*/
+.fanhui{width:100%; height:5rem; line-height:5rem; background:#fff; text-align:center; position:absolute; z-index:9999;}
+.fanhui img{width:1rem; float:left; margin:5%;}
+.fanhui span{margin-left:-12%; font-size:1.4rem; color:#2f3139;}
+.fanhui2 img{width:1rem; float:left; margin:8% 5%;}
+
+/*footer 部分*/
+footer{width: 100%;height: 4rem;background: #fff;border-top: solid 1px #d2d6d8;position: fixed;bottom: 0;left: 0;overflow: hidden;z-index:999;}
+.pjBlue{color: #2aa0e8;}
+footer,footer>ul{width: 100%;height:4rem;}
+footer{background: #fff;position: fixed;left: 0;bottom: 0;}
+footer>ul>li{width:50%; height:4rem; float:left; color:#333; font-size:1rem;}
+footer>ul>li>a>span{display:block;width:2rem;height: 2rem;margin:.3rem auto 0;}
+footer>ul>li>a>p{width: 100%;height: 2rem;text-align: center; color:#333;}
+footer>ul>li:nth-of-type(1) a .nomarl{background: url(../img/footer_01_h.png) right center no-repeat;background-size:100% 100%;}
+footer>ul>li:nth-of-type(2) a .nomarl{background: url(../img/footer_02_h.png) right center no-repeat;background-size:100% 100%;}
+footer>ul>li:nth-of-type(1) a .checked{background: url(../img/footer_01.png) left center no-repeat;background-size:100% 100%;}
+footer>ul>li:nth-of-type(2) a .checked{background: url(../img/footer_02.png) left center no-repeat;background-size:100% 100%;}
+
+.jihuo img{
+    position: fixed;
+    width: 4.5rem;
+    left: 43%;
+    bottom: -.1rem;
+    z-index: 9999;
+}
+
+/*关于我们*/
+.about-main{padding:3rem; height:100%;}
+.about-main p{text-align:left; line-height:2rem; text-indent:2rem; margin-top:1rem;}
+
+
+/*CSS3开关*/
+.tg-list-item{
+    display: inline-block;
+    vertical-align: middle;
+}
+.tgl{display:none;}
+.tgl,.tgl :after,.tgl :before,.tgl+.tgl-btn{
+    -webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;
+}
+.tgl+.tgl-btn{
+    outline:0;display:block;width:72px;height:32px;position:relative;cursor:pointer;
+    margin-left:15rem;
+}
+.tgl+.tgl-btn:after,.tgl+.tgl-btn:before{
+    position:relative;display:block;content:"";width:50%;height:100%
+}
+.tgl+.tgl-btn:after{left:0}
+.tgl+.tgl-btn:before{display:none}
+.tgl:checked+.tgl-btn:after{left:50%}
+
+
+.tgl-light+.tgl-btn{
+    background:#f0f0f0;
+	margin-top:.7rem;
+    border-radius:32px;padding:1px;-webkit-transition:all .4s ease;transition:all .4s ease;
+}
+.tgl-light+.tgl-btn:after{
+    border-radius:50%;background:#fff;-webkit-transition:all .2s ease;transition:all .2s ease;
+}
+.tgl-light:checked+.tgl-btn{
+    background:#11bd64
+}
+/*css3开关结束*/
+

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head th:replace="common/headcssjs :: common_header(~{::title},~{::link})">
+    <title>记录管理</title>
+    <link>
+</head>
+<body>
+<div class="x-body">
+    <form id="searchForm" class="layui-form x-center" action="">
+        <div class="layui-form-pane">
+            <div class="layui-form-item">
+                <label class="layui-form-label">模板id</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="lTempId" name="lTempId" placeholder="模板id" class="layui-input"/>
+                </div>
+                <label class="layui-form-label">手机号码</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="lPhoneNum" name="lPhoneNum" placeholder="手机号码" class="layui-input"/>
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">标签</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="sdktag" name="sdktag" placeholder="标签" class="layui-input"/>
+                </div>
+
+
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-inline">
+                    <select id="status" name="status">
+                        <option value=""></option>
+                        <option value="0">发送失败</option>
+                        <option value="1">发送成功</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline" style="width : 80px">
+                    <button class="layui-btn" lay-submit="" lay-filter="search"><i class="layui-icon">&#xe615;</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <div class="layui-row">
+        <table id="dateTable" lay-filter="dateTable"></table>
+    </div>
+</div>
+
+</body>
+<div th:replace="common/headcssjs::js"></div>
+<script type="text/javascript">
+    layui.use(['table', 'layer'], function () {
+        var table = layui.table
+            , layer = layui.layer
+            , $ = layui.jquery
+            , form = layui.form;
+
+        // 表格渲染
+        var tableIns = table.render({
+            elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）
+            , id: 'dateTable'
+            , even: true //开启隔行背景
+            , size: 'sm' //小尺寸的表格
+            , height: 'full-150'    //容器高度
+            , cols: [
+                [                  //标题栏
+                    {field: 'id', title: '序号', width: 40, type: 'numbers'}
+                    , {field: 'lTempId', title: '模板id', width: 100}
+                    , {field: 'lPhoneNum', title: '手机号码', width: 120}
+                    , {field: 'lRequestIp', title: '请求IP地址', width: 120}
+                    , {field: 'lContent', title: '发送内容', width: 120}
+                    , {field: 'sdktag', title: '标签', width: 80}
+                    , {
+                    field: 'status',
+                    title: '状态',
+                    width: 60,
+                    templet: function (d) {
+                        if (d.status == 1) {
+                            return '成功';
+                        } else if (d.status == 0) {
+                            return '失败';
+                        }
+                    }
+                }
+                    , {field: 'lFailureReason', title: '失败原因', width: 120}
+                    , {field: 'lSendTime', title: '发送时间', width: 120}
+                ]
+            ]
+            , url: '/logs/tableData'
+            , method: 'get'
+            , request: {
+                pageName: 'pageNumber' //页码的参数名称，默认：page
+                , limitName: 'pageSize' //每页数据量的参数名，默认：limit
+            }
+            , page: true
+            , limits: [30, 60, 90, 150, 300]
+            , limit: 30 //默认采用30
+            , loading: true
+            , done: function (res, curr, count) {
+            }
+        });
+
+
+        reloadTable = function (lTempId, lPhoneNum, sdktag, status) {
+            table.reload('dateTable', {
+                url: '/logs/tableData'
+                , where: {
+                    lTempId: lTempId, lPhoneNum: lPhoneNum
+                    , sdktag: sdktag, status: status
+                } //设定异步数据接口的额外参数
+            });
+        }
+
+        form.on('submit(search)', function (data) {
+            reloadTable(data.field.lTempId, data.field.lPhoneNum
+                , data.field.sdktag, data.field.status);
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+    });
+
+
+</script>
+</html>

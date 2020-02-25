@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/headcssjs :: common_header(~{::title},~{::link})">
+    <title>添加模板</title>
+    <link>
+</head>
+<body>
+<div class="x-body">
+    <form id="addForm" class="layui-form" action="">
+        <input type="hidden" name="tplComId" th:value="${com.id}">
+        <input type="hidden" name="sdktag" th:value="${com.sdktag}">
+        <div class="layui-form-item">
+            <label class="layui-form-label"><em class="require-mark">*</em>模板名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="tplName" placeholder="模板名称" class="layui-input" value="" required
+                       lay-verify="required" autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item" th:if="${com.smsSendType == 0}">
+            <label class="layui-form-label"><em class="require-mark">*</em>短信签名</label>
+            <div class="layui-input-block">
+                <input type="text" name="tplSmsHeader" placeholder="短信签名,e.g:【公司名全名或简称】"
+                       class="layui-input" value="" required
+                       lay-verify="required" autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><em class="require-mark">*</em>模板内容</label>
+            <div class="layui-input-block">
+                <input type="text" name="tplContent" placeholder="参数使用%param代替,e.g:您的短信验证码是：%param ,在%param分钟内有效。"
+                       class="layui-input" value="" required
+                       lay-verify="required" autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="%param" class="layui-input" value="%param" autocomplete="off"
+                       readonly/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <input type="text" name="tplRemark" placeholder="备注信息"
+                       class="layui-input" value="" required
+                       lay-verify="required" autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <button class="layui-btn" lay-filter="sub" lay-submit>
+                保存
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </form>
+</div>
+</body>
+<div th:replace="common/headcssjs::js"></div>
+<script type="text/javascript">
+    layui.use(['form', 'layer'], function () {
+        // 操作对象
+        var form = layui.form
+            , layer = layui.layer
+            , $ = layui.jquery;
+
+        form.on('submit(sub)', function (data) {
+
+            util.sendAjax({
+                type: 'POST',
+                url: '/template/postAdd',
+                data: $('#addForm').serialize(),
+                loadFlag: true,
+                success: function (data) {
+                    pop_close();
+                }
+            });
+
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+
+    });
+</script>
+</html>

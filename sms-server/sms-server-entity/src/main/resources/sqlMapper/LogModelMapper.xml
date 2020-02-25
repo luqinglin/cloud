@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.sta.sms.dao.LogModelMapper">
+  <resultMap id="BaseResultMap" type="me.sta.sms.pojo.LogModel">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="l_temp_id" jdbcType="INTEGER" property="lTempId" />
+    <result column="sdkTag" jdbcType="VARCHAR" property="sdktag" />
+    <result column="l_phone_num" jdbcType="VARCHAR" property="lPhoneNum" />
+    <result column="l_content" jdbcType="VARCHAR" property="lContent" />
+    <result column="l_request_ip" jdbcType="VARCHAR" property="lRequestIp" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="l_failure_reason" jdbcType="VARCHAR" property="lFailureReason" />
+    <result column="l_send_time" jdbcType="TIMESTAMP" property="lSendTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, l_temp_id, sdkTag, l_phone_num, l_content, l_request_ip, status, l_failure_reason,
+    l_send_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sms_logs
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sms_logs
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="me.sta.sms.pojo.LogModel">
+    insert into sms_logs (id,  l_temp_id,
+      sdkTag, l_phone_num, l_content,
+      l_request_ip, status, l_failure_reason,
+      l_send_time)
+    values (#{id,jdbcType=INTEGER}, #{lTempId,jdbcType=INTEGER},
+      #{sdktag,jdbcType=VARCHAR}, #{lPhoneNum,jdbcType=VARCHAR}, #{lContent,jdbcType=VARCHAR},
+      #{lRequestIp,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{lFailureReason,jdbcType=VARCHAR},
+      #{lSendTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="me.sta.sms.pojo.LogModel">
+    insert into sms_logs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="lTempId != null">
+        l_temp_id,
+      </if>
+      <if test="sdktag != null">
+        sdkTag,
+      </if>
+      <if test="lPhoneNum != null">
+        l_phone_num,
+      </if>
+      <if test="lContent != null">
+        l_content,
+      </if>
+      <if test="lRequestIp != null">
+        l_request_ip,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="lFailureReason != null">
+        l_failure_reason,
+      </if>
+      <if test="lSendTime != null">
+        l_send_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lTempId != null">
+        #{lTempId,jdbcType=INTEGER},
+      </if>
+      <if test="sdktag != null">
+        #{sdktag,jdbcType=VARCHAR},
+      </if>
+      <if test="lPhoneNum != null">
+        #{lPhoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="lContent != null">
+        #{lContent,jdbcType=VARCHAR},
+      </if>
+      <if test="lRequestIp != null">
+        #{lRequestIp,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lFailureReason != null">
+        #{lFailureReason,jdbcType=VARCHAR},
+      </if>
+      <if test="lSendTime != null">
+        #{lSendTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.sta.sms.pojo.LogModel">
+    update sms_logs
+    <set>
+      <if test="lTempId != null">
+        l_temp_id = #{lTempId,jdbcType=INTEGER},
+      </if>
+      <if test="sdktag != null">
+        sdkTag = #{sdktag,jdbcType=VARCHAR},
+      </if>
+      <if test="lPhoneNum != null">
+        l_phone_num = #{lPhoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="lContent != null">
+        l_content = #{lContent,jdbcType=VARCHAR},
+      </if>
+      <if test="lRequestIp != null">
+        l_request_ip = #{lRequestIp,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lFailureReason != null">
+        l_failure_reason = #{lFailureReason,jdbcType=VARCHAR},
+      </if>
+      <if test="lSendTime != null">
+        l_send_time = #{lSendTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.sta.sms.pojo.LogModel">
+    update sms_logs
+    set l_temp_id = #{lTempId,jdbcType=INTEGER},
+      sdkTag = #{sdktag,jdbcType=VARCHAR},
+      l_phone_num = #{lPhoneNum,jdbcType=VARCHAR},
+      l_content = #{lContent,jdbcType=VARCHAR},
+      l_request_ip = #{lRequestIp,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      l_failure_reason = #{lFailureReason,jdbcType=VARCHAR},
+      l_send_time = #{lSendTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByPage" resultMap="BaseResultMap">
+    select *
+    from sms_logs
+    where 1=1
+    <if test="lTempId != null">
+      and lTempId like concat('%',#{lTempId},'%')
+    </if>
+    <if test="lPhoneNum != null">
+      and lPhoneNum like concat('%',#{lPhoneNum},'%')
+    </if>
+    <if test="status != null">
+      and status = #{status,jdbcType=INTEGER}
+    </if>
+    <if test="sdktag != null">
+      and sdkTag like concat('%',#{sdktag},'%')
+    </if>
+    order by id desc
+  </select>
+</mapper>

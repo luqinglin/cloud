@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head th:replace="common/headcssjs :: common_header(~{::title},~{::link})">
+    <title>用户管理</title>
+    <link>
+</head>
+<body>
+<div class="x-body">
+    <form id="searchForm" class="layui-form x-center" action="">
+        <div class="layui-form-pane">
+            <div class="layui-form-item">
+                <label class="layui-form-label">模板名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="tplName" name="tplName" placeholder="模板名称" class="layui-input"/>
+                </div>
+                <label class="layui-form-label">标签</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="sdktag" name="sdktag" placeholder="标签" class="layui-input"/>
+                </div>
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-inline">
+                    <select id="status" name="status">
+                        <option value=""></option>
+                        <option value="0">禁用</option>
+                        <option value="1">启用</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline" style="width : 80px">
+                    <button class="layui-btn" lay-submit="" lay-filter="search"><i class="layui-icon">&#xe615;</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <div class="layui-row">
+        <div class="layui-btn-group">
+            <button id="add" class="layui-btn layui-btn-small">添加配置</button>
+        </div>
+        <table id="dateTable" lay-filter="dateTable"></table>
+    </div>
+</div>
+
+<script type="text/html" id="barOption">
+    <a class="layui-btn layui-btn-xs" lay-event="detail">详情</a>
+    {{#  if(d.status == '0'){ }}
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="use">启用</a>
+    {{#  } }}
+
+    {{#  if(d.status == '1'){ }}
+    <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="unuse">禁用</a>
+    {{#  } }}
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+</body>
+<div th:replace="common/headcssjs::js"></div>
+<script type="text/javascript">
+    layui.use(['table', 'layer'], function () {
+        var table = layui.table
+            , layer = layui.layer
+            , $ = layui.jquery
+            , form = layui.form;
+
+        // 表格渲染
+        var tableIns = table.render({
+            elem: '#dateTable'                  //指定原始表格元素选择器（推荐id选择器）
+            , id: 'dateTable'
+            , even: true //开启隔行背景
+            , size: 'sm' //小尺寸的表格
+            , height: 'full-150'    //容器高度
+            , cols: [
+                [                  //标题栏
+                    {field: 'id', title: '序号', width: 40, type: 'numbers'}
+                    , {field: 'tplNo', title: '模板id', width: 140}
+                    , {field: 'tplName', title: '模板名称', width: 120}
+                    , {field: 'tplSmsHeader', title: '短信签名', width: 140}
+                    , {field: 'tplContent', title: '模板内容', width: 120}
+                    , {field: 'sdktag', title: '标签', width: 80}
+                    , {
+                    field: 'status',
+                    title: '状态',
+                    width: 60,
+                    templet: function (d) {
+                        if (d.status == 1) {
+                            return '启用';
+                        } else if (d.status == 0) {
+                            return '禁用';
+                        }
+                    }
+                }
+                    , {field: 'createtime', title: '创建时间', width: 120}
+                    , {field: 'updatetime', title: '更新时间', width: 120}
+                    , {fixed: 'right', title: '操作', width: 240, align: 'center', toolbar: '#barOption'} //这里的toolbar值是模板元素的选择器
+                ]
+            ]
+            , url: '/template/tableData'
+            , method: 'get'
+            , request: {
+                pageName: 'pageNumber' //页码的参数名称，默认：page
+                , limitName: 'pageSize' //每页数据量的参数名，默认：limit
+            }
+            , page: true
+            , limits: [30, 60, 90, 150, 300]
+            , limit: 30 //默认采用30
+            , loading: true
+            , done: function (res, curr, count) {
+            }
+        });
+
+        table.on('tool(dateTable)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'del') {
+                layer.confirm('真的删除么', function (index) {
+                    util.sendAjax({
+                        type: 'POST',
+                        url: '/template/delete',
+                        data: {id: data.id},
+                        loadFlag: true,
+                        success: function (data) {
+                            layer.close(index);
+                            reloadTable($('#comName').val(), $('#sdktag').val()
+                                , $("#status :selected").val());
+                        },
+                        unSuccess: function (data) {
+                            layer.close(index);
+                        }
+                    })
+                });
+            } else if (obj.event === 'edit') {
+                pop_show('编辑公司', '/template/update?id=' + data.id, '', '', function () {
+                    reloadTable($('#comName').val(), $('#sdktag').val()
+                        , $("#status :selected").val());
+                });
+            } else if (obj.event === 'use') {
+                layer.confirm('确定启用吗', function (index) {
+                    util.sendAjax({
+                        type: 'POST',
+                        url: '/template/use',
+                        data: {id: data.id},
+                        loadFlag: true,
+                        success: function (data) {
+                            layer.close(index);
+                            reloadTable($('#comName').val(), $('#sdktag').val()
+                                , $("#status :selected").val());
+                        },
+                        unSuccess: function (data) {
+                            layer.close(index);
+                        }
+                    });
+                });
+            } else if (obj.event === 'unuse') {
+                layer.confirm('确定禁用吗', function (index) {
+                    util.sendAjax({
+                        type: 'POST',
+                        url: '/template/unuse',
+                        data: {id: data.id},
+                        loadFlag: true,
+                        success: function (data) {
+                            layer.close(index);
+                            reloadTable($('#comName').val(), $('#sdktag').val()
+                                , $("#status :selected").val());
+                        },
+                        unSuccess: function (data) {
+                            layer.close(index);
+                        }
+                    });
+                });
+            } else if (obj.event === 'addTemplates') {
+                pop_show('添加模板', '/template/add?id=' + data.id, '', '', function () {
+                    reloadTable($('#comName').val(), $('#sdktag').val()
+                        , $("#status :selected").val());
+                });
+            } else if (obj.event === 'detail') {
+                pop_show('详情', '/template/detail?id=' + data.id, '', '', function () {
+                    reloadTable($('#comName').val(), $('#sdktag').val()
+                        , $("#status :selected").val());
+                });
+            }
+        });
+
+        $("#add").click(function () {
+            pop_show('添加用户', '/template/add', '', '', function () {
+                reloadTable($('#comName').val(), $('#sdktag').val()
+                    , $("#status :selected").val());
+            });
+        });
+
+        reloadTable = function (tplName, sdktag, status) {
+            table.reload('dateTable', {
+                url: '/template/tableData'
+                , where: {
+                    tplName: tplName, sdktag: sdktag, status: status
+                } //设定异步数据接口的额外参数
+            });
+        }
+
+        form.on('submit(search)', function (data) {
+            reloadTable(data.field.tplName, data.field.sdktag, data.field.status);
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+    });
+
+
+</script>
+</html>
