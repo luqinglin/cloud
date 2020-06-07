@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Import;
 @EnableEurekaClient
 @ComponentScan("me.sta")
 @MapperScan("me.sta.bytetcc.dao")
-//@EnableAutoConfiguration(exclude = { MongoAutoConfiguration.class })
+@EnableAutoConfiguration(exclude = { MongoAutoConfiguration.class })
 public class BytetccServerApplication {
 
 	public static void main(String[] args) {

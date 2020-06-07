@@ -20,7 +20,7 @@
 			<version>1.0</version>
 		</dependency>
 
-		<dependency>
+	<!--	<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
@@ -28,7 +28,7 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>me.sta</groupId>
