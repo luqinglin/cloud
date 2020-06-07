@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Import;
 @EnableFeignClients
 @EnableEurekaClient
 @EnableCircuitBreaker
-@SpringBootApplication
 @ComponentScan("me.sta")
 @MapperScan("me.sta.bytetcc.dao")
 @Import(SpringCloudSecondaryConfiguration.class)

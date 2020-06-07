@@ -26,6 +26,7 @@ public class DataSourceConfiguration {
     @Primary
     @ConfigurationProperties(prefix = "spring.master-datasource")
     public DataSource primaryDataSource() {
+
         return DataSourceBuilder.create().build();
     }
 
