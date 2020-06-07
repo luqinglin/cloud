@@ -1,6 +1,5 @@
 package me.sta.service.impl;
 
-import com.codingapi.tx.annotation.ITxTransaction;
 import me.sta.dao.TestMapper;
 import me.sta.entity.Test;
 import me.sta.service.TestService;
@@ -12,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by luqingling on 2018/12/13.
  */
 @Component
-public class TestServiceImpl implements TestService,ITxTransaction {
+public class TestServiceImpl implements TestService{
 
     @Autowired
     private TestMapper testMapper;

@@ -45,6 +45,11 @@
 			<artifactId>druid</artifactId>
 			<version>1.1.10</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.2.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
