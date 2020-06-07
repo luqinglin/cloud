@@ -60,7 +60,7 @@
 
     <springProfile name="bytetcc">
 
-        <substitutionProperty name="log.base" value="/Users/xudong/ideadev/workspase/gitworkspace/cloud-project/tmp/"/>
+        <substitutionProperty name="log.base" value="/Users/luqingling/GC/tmp/"/>
 
         <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
             <encoder charset="UTF-8">
