@@ -21,7 +21,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration
 @ComponentScan("me.sta")
 @MapperScan("me.sta.dao")
-//@RibbonClient(configuration = MyRule.class)
+//@RibbonClient(name = "helloServer",configuration = MyRule.class)
 public class HelloConsumerApplication {
 
 	public static void main(String[] args) {

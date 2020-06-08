@@ -15,12 +15,14 @@ public class TestRestful implements ServiceApi {
     private String form;
     @Value("${form1}")
     private String form1;
+    @Value("${server.port:8080}")
+    private String port;
     @Autowired
     private TestService testService;
 
     @Override
     public String home(String username,String passwd){
-        String s = "{\"id\":"+form+",\"form1\":"+form1+"}";
+        String s = "{\"id\":"+form+",\"form1\":"+form1+","+" port:"+ port+"}";
         return s;
     }
     @Override

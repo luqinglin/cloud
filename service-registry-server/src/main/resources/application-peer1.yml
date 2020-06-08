@@ -5,7 +5,7 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+      defaultZone: http://admin:123456@peer1:1111/eureka
       #defaultZone: http://admin:123456@peer2:2222/eureka
   server:
     enable-self-preservation: false
