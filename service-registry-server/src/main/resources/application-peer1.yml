@@ -2,10 +2,13 @@ eureka:
   instance:
     hostname: peer1
   client:
-    register-with-eureka: true
-    fetch-registry: true
+    register-with-eureka: false
+    fetch-registry: false
     service-url:
-      defaultZone: http://admin:123456@peer2:2222/eureka
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+      #defaultZone: http://admin:123456@peer2:2222/eureka
+  server:
+    enable-self-preservation: false
 spring:
   application:
     name: service-registry-server

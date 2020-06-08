@@ -26,6 +26,12 @@
 			</exclusions>
 		</dependency>
 
+		<dependency>
+			<groupId>me.sta</groupId>
+			<artifactId>service-client</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 		<!-- bytetcc -->
 		<dependency>
 			<groupId>org.bytesoft</groupId>

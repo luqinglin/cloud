@@ -12,6 +12,7 @@
   <modules>
     <!--base-->
     <module>service-common</module>
+    <module>service-client</module>
     <module>service-registry-server</module>
     <module>config-server</module>
     <module>tx-manager</module>
@@ -23,6 +24,8 @@
     <!-- sms -->
     <module>sms-server</module>
     <module>bytetcc-server</module>
+    <module>service-registry-zookeeper</module>
+
   </modules>
 
   <name>cloud</name>
@@ -61,13 +64,20 @@
   <dependencies>
     <!--配置中心-->
     <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-config</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-config</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-config-server</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>

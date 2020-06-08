@@ -1,5 +1,7 @@
 package me.sta.helloservice;
 
+import org.apache.catalina.User;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,4 +20,10 @@ public interface ServiceApi {
 
     @RequestMapping(value = "/saveTest",method = RequestMethod.GET)
     public int save(@RequestParam("name") String name,@RequestParam("userId") Integer userId);
+
+
+    @RequestMapping(value = "/saveTest",method = RequestMethod.GET,consumes= MediaType.APPLICATION_JSON_VALUE)
+    default int save(@RequestParam("name") User name){
+        return 0;
+    }
 }
