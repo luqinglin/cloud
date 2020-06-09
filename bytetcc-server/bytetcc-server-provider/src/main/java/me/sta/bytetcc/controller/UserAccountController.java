@@ -1,11 +1,14 @@
 package me.sta.bytetcc.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import me.sta.bytetcc.dao.UserAccountMapper;
 import me.sta.bytetcc.entity.UserAccount;
 import me.sta.bytetccApi.UserAccountServiceApi;
 import org.bytesoft.compensable.Compensable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,4 +54,5 @@ public class UserAccountController implements UserAccountServiceApi {
     public UserAccount find(Integer id) {
         return userAccountMapper.selectByPrimaryKey(id);
     }
+
 }

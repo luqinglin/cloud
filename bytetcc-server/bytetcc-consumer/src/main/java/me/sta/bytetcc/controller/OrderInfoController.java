@@ -90,6 +90,11 @@ public class OrderInfoController implements OrderServiceApi{
 
     @RequestMapping("order/findUser")
     public void find(Integer id){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         UserAccount userAccount = userAccountService.find(id);
         System.out.println(userAccount.getAvailValue());
     }

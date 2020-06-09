@@ -22,7 +22,7 @@
 
 		<dependency>
 			<groupId>me.sta</groupId>
-			<artifactId>service-common</artifactId>
+			<artifactId>service-client</artifactId>
 			<version>1.0</version>
 		</dependency>
 

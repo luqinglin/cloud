@@ -1,5 +1,6 @@
 package me.sta.client;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import me.sta.client.impl.HelloServiceImpl;
 import me.sta.helloservice.ServiceApi;
 import org.springframework.cloud.openfeign.FeignClient;
