@@ -23,7 +23,6 @@ public class TestRestful {
 
     @RequestMapping(value = "/feign-consumer/{id}", method = RequestMethod.GET)
     @HystrixCommand(fallbackMethod = "helloConsumerHandler", commandProperties = {
-            @HystrixProperty(name="execution.isolation.strategy",value="THREAD"),
         @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1500")
     })
     public String helloConsumer(@PathVariable("id") String id) {

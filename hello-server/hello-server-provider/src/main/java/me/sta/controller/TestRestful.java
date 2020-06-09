@@ -32,7 +32,7 @@ public class TestRestful implements ServiceApi {
     })
     public String home(String username,String passwd){
         try {
-            Thread.sleep(10000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
