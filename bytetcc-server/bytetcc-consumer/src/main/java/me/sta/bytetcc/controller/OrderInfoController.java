@@ -1,5 +1,7 @@
 package me.sta.bytetcc.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import me.sta.bytetcc.client.UserAccountService;
 import me.sta.bytetcc.dao.OrderInfoMapper;
 import me.sta.bytetcc.dao.UserAccountMapper;
@@ -11,6 +13,7 @@ import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
@@ -87,15 +90,24 @@ public class OrderInfoController implements OrderServiceApi{
         userAccountMapper.updateByPrimaryKeySelective(userAccount);
         System.out.println("test");
     }
-
+//    @HystrixCommand(fallbackMethod = "findHandler", commandProperties = {
+//            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+//    })
     @RequestMapping("order/findUser")
-    public void find(Integer id){
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    @ResponseBody
+    public Object find(Integer id){
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
         UserAccount userAccount = userAccountService.find(id);
-        System.out.println(userAccount.getAvailValue());
+        return userAccount;
     }
+
+//    public Object findHandler(Integer id,Throwable throwable){
+//        throwable.printStackTrace();
+//        return "降级处理";
+//    }
 }

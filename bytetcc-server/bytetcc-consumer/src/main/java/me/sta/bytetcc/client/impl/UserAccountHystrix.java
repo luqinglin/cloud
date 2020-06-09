@@ -18,19 +18,19 @@ public class UserAccountHystrix implements UserAccountService{
 
     @Override
     public String increase(Integer id, BigDecimal amount) {
-        System.out.println("increase熔断");
+        System.out.println("increase降级");
         return null;
     }
 
     @Override
     public String decrease(Integer id, BigDecimal amount) {
-        System.out.println("decrease熔断");
+        System.out.println("decrease降级");
         return null;
     }
 
     @Override
     public UserAccount find(Integer id) {
-        System.out.println("find熔断");
+        System.out.println("find降级");
         return null;
     }
 }

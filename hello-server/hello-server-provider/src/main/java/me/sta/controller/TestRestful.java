@@ -25,17 +25,20 @@ public class TestRestful implements ServiceApi {
     private String port;
     @Autowired
     private TestService testService;
-
-    @Override
     @HystrixCommand(fallbackMethod = "homeHandler", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000"),
+            @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"),
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60")
     })
+    @Override
     public String home(String username,String passwd){
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         if (username.indexOf("-")!=-1){
             throw new RuntimeException();

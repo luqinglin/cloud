@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Import;
 @Import(SpringCloudSecondaryConfiguration.class)
 @SpringBootApplication
 @EnableEurekaClient
+@EnableCircuitBreaker
 @ComponentScan("me.sta")
 @MapperScan("me.sta.bytetcc.dao")
 @EnableAutoConfiguration(exclude = { MongoAutoConfiguration.class })

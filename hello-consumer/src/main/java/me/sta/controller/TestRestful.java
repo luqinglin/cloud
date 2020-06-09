@@ -23,18 +23,18 @@ public class TestRestful {
 
     @RequestMapping(value = "/feign-consumer/{id}", method = RequestMethod.GET)
     @HystrixCommand(fallbackMethod = "helloConsumerHandler", commandProperties = {
-        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1500")
+        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2500")
     })
     public String helloConsumer(@PathVariable("id") String id) {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-//        return helloService.home(id,"2");
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        return helloService.home(id,"2");
 //        if (id!="")
 //            throw new RuntimeException();
-        return "sss";
+//        return "sss";
     }
     public String helloConsumerHandler(@PathVariable("id") String id) {
         return "客户端降级处理了";

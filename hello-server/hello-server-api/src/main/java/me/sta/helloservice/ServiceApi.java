@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 public interface ServiceApi {
 
-    @RequestMapping(value = "/hello",method = RequestMethod.GET)
-    public String home(@RequestHeader("username") String username, @RequestHeader("passwd") String passwd);
+    @RequestMapping(value = "/a/hello",method = RequestMethod.GET)
+    public String home(@RequestParam("username") String username, @RequestParam("passwd") String passwd);
 
-    @RequestMapping(value = "/hello1",method = RequestMethod.GET)
-    public String home1(@RequestHeader("username") String username,@RequestHeader("passwd") String passwd);
+    @RequestMapping(value = "/a/hello1",method = RequestMethod.GET)
+    public String home1(@RequestParam("username") String username,@RequestParam("passwd") String passwd);
 
-    @RequestMapping(value = "/saveTest",method = RequestMethod.GET)
+    @RequestMapping(value = "/a/saveTest",method = RequestMethod.GET)
     public int save(@RequestParam("name") String name,@RequestParam("userId") Integer userId);
 
 
-    @RequestMapping(value = "/saveTest",method = RequestMethod.GET,consumes= MediaType.APPLICATION_JSON_VALUE)
-    default int save(@RequestParam("name") User name){
-        return 0;
-    }
+//    @RequestMapping(value = "/saveTest",method = RequestMethod.GET,consumes= MediaType.APPLICATION_JSON_VALUE)
+//    default int save(@RequestParam("name") User name){
+//        return 0;
+//    }
 }
