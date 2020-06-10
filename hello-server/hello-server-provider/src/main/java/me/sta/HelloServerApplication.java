@@ -18,7 +18,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDiscoveryClient
 public class HelloServerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HelloServerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(HelloServerApplication.class, args);
+    }
 }

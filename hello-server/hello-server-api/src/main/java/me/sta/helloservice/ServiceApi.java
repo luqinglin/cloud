@@ -1,8 +1,5 @@
 package me.sta.helloservice;
 
-import org.apache.catalina.User;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 public interface ServiceApi {
 
-    @RequestMapping(value = "/a/hello",method = RequestMethod.GET)
+    @RequestMapping(value = "/a/hello", method = RequestMethod.GET)
     public String home(@RequestParam("username") String username, @RequestParam("passwd") String passwd);
 
-    @RequestMapping(value = "/a/hello1",method = RequestMethod.GET)
-    public String home1(@RequestParam("username") String username,@RequestParam("passwd") String passwd);
+    @RequestMapping(value = "/a/hello1", method = RequestMethod.GET)
+    public String home1(@RequestParam("username") String username, @RequestParam("passwd") String passwd);
 
-    @RequestMapping(value = "/a/saveTest",method = RequestMethod.GET)
-    public int save(@RequestParam("name") String name,@RequestParam("userId") Integer userId);
+    @RequestMapping(value = "/a/saveTest", method = RequestMethod.GET)
+    public int save(@RequestParam("name") String name, @RequestParam("userId") Integer userId);
 
 
 //    @RequestMapping(value = "/saveTest",method = RequestMethod.GET,consumes= MediaType.APPLICATION_JSON_VALUE)

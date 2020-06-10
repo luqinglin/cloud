@@ -18,9 +18,9 @@ public class QueryRestful {
     @Autowired
     private TestService testService;
 
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
-    public String test(String userId,String testId){
-        Test test = testService.findByUserIdAndId(Integer.parseInt(userId),Long.parseLong(testId));
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String test(String userId, String testId) {
+        Test test = testService.findByUserIdAndId(Integer.parseInt(userId), Long.parseLong(testId));
         return JSONObject.toJSONString(test);
     }
 

@@ -11,14 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by luqingling on 2018/12/13.
  */
 @Component
-public class TestServiceImpl implements TestService{
+public class TestServiceImpl implements TestService {
 
     @Autowired
     private TestMapper testMapper;
 
     @Override
     @Transactional
-    public int save(String name,Integer userId) {
+    public int save(String name, Integer userId) {
         //测试分布式事务
         //int a = 100/0;
         Test test = new Test();
@@ -31,6 +31,6 @@ public class TestServiceImpl implements TestService{
 
     @Override
     public Test findByUserIdAndId(int userId, Long id) {
-        return testMapper.findByUserIdAndId(userId,id);
+        return testMapper.findByUserIdAndId(userId, id);
     }
 }

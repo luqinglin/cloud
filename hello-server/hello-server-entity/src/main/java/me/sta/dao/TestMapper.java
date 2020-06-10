@@ -7,7 +7,7 @@ import me.sta.entity.Test;
  */
 public interface TestMapper {
 
-//    @Insert("insert into test (name) values (#{name})")
+    //    @Insert("insert into test (name) values (#{name})")
 //    @Options(useGeneratedKeys=true, keyProperty="id", keyColumn="id")
     int insert(Test test);
 

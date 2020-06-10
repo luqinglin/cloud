@@ -12,7 +12,7 @@ public class SinkReceiver {
 
 
     @StreamListener(Sink.INPUT)
-    public void receive(String payload){
+    public void receive(String payload) {
         System.out.println(payload);
     }
 }

@@ -5,5 +5,5 @@ package me.sta.service;
  */
 public interface TestService {
 
-    int save(String name,Integer userId);
+    int save(String name, Integer userId);
 }

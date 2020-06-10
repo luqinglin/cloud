@@ -14,8 +14,6 @@
     </sql>
 
 
-
-
     <select id="findByUserIdAndId" resultMap="BaseResultMap">
         select * from test where id = #{id,jdbcType=BIGINT} and user_id = #{userId,jdbcType=BIGINT}
 

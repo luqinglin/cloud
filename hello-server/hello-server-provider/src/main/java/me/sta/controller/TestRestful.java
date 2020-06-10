@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RefreshScope
-@DefaultProperties(defaultFallback = "defaultHandler" ,commandProperties = {
+@DefaultProperties(defaultFallback = "defaultHandler", commandProperties = {
         @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
 })
 public class TestRestful implements ServiceApi {
@@ -25,6 +25,7 @@ public class TestRestful implements ServiceApi {
     private String port;
     @Autowired
     private TestService testService;
+
     @HystrixCommand(fallbackMethod = "homeHandler", commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000"),
             @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),
@@ -33,30 +34,31 @@ public class TestRestful implements ServiceApi {
             @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60")
     })
     @Override
-    public String home(String username,String passwd){
+    public String home(String username, String passwd) {
 //        try {
 //            Thread.sleep(1000);
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
 
-        if (username.indexOf("-")!=-1){
+        if (username.indexOf("-") != -1) {
             throw new RuntimeException();
         }
 
-        String s = "{\"id\":"+form+",\"form1\":"+form1+","+" port:"+ port+"}";
+        String s = "{\"id\":" + form + ",\"form1\":" + form1 + "," + " port:" + port + "}";
         return s;
     }
 
-    public String homeHandler(String username,String passwd) {
+    public String homeHandler(String username, String passwd) {
         return "线程池：  " + Thread.currentThread().getName() + " homeHandler";
     }
 
     public String defaultHandler() {
         return "线程池：  " + Thread.currentThread().getName() + " defaultHandler";
     }
+
     @Override
-    public String home1(String username,String passwd){
+    public String home1(String username, String passwd) {
         System.out.println(username);
         System.out.println(passwd);
         String s = "{\"id\":1}";
@@ -64,8 +66,8 @@ public class TestRestful implements ServiceApi {
     }
 
     @Override
-    public int save(String name,Integer userId) {
-        return testService.save(name,userId);
+    public int save(String name, Integer userId) {
+        return testService.save(name, userId);
     }
 
 

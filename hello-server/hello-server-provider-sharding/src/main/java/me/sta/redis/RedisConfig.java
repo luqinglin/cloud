@@ -17,7 +17,7 @@ public class RedisConfig {
     private static Logger logger = LoggerFactory.getLogger(RedisConfig.class);
 
     @Bean
-    public RedisServerService redisServerService(RedisTemplate redisTemplate){
+    public RedisServerService redisServerService(RedisTemplate redisTemplate) {
         RedisServerService redisServerService = new RedisServerService();
         redisServerService.setRedisTemplate(redisTemplate);
         return redisServerService;

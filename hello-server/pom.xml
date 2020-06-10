@@ -16,8 +16,16 @@
 		<module>hello-server-entity</module>
 		<module>hello-server-provider</module>
 		<module>hello-server-provider-sharding</module>
-	</modules>
+        <module>hello-server-provider-alibaba</module>
+    </modules>
 
+	<dependencies>
+		<dependency>
+			<groupId>me.sta</groupId>
+			<artifactId>service-common</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
 
 
 </project>

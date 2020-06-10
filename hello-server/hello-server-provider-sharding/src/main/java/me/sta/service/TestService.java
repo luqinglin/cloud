@@ -7,7 +7,7 @@ import me.sta.entity.Test;
  */
 public interface TestService {
 
-    int save(String name,Integer userId);
+    int save(String name, Integer userId);
 
     Test findByUserIdAndId(int userId, Long id);
 }

@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: routh
+#          uri: http://localhost:10086
+          uri: lb://helloServer
+          predicates:
+            - Path=/a/hello**
+
+        - id: routh1
+#          uri: http://localhost:10086
+          uri: lb://helloServer
+          predicates:
+            - Path=/a/hello1**
+server:
+  port: 9527
+  # 连接注册中心的服务地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123456@peer1:1111/eureka
+

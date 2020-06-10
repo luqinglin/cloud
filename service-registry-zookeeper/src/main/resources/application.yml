@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: service-registry-server
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+server:
+  port: 3333

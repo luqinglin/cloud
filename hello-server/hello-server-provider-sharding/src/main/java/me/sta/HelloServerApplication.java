@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan("me.sta.dao")
 public class HelloServerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HelloServerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(HelloServerApplication.class, args);
+    }
 }

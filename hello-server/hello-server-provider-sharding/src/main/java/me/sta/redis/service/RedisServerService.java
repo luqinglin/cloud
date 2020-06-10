@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * create by lorne on 2017/11/11
  */
-public class  RedisServerService {
+public class RedisServerService {
 
     private RedisTemplate<String, Object> redisTemplate;
 
@@ -15,10 +15,10 @@ public class  RedisServerService {
         this.redisTemplate = redisTemplate;
     }
 
-    public Long generatorKey(){
-       String key = "shardingkey";
-       return redisTemplate.opsForValue().increment(key,1);
-   }
+    public Long generatorKey() {
+        String key = "shardingkey";
+        return redisTemplate.opsForValue().increment(key, 1);
+    }
 
 
 }
