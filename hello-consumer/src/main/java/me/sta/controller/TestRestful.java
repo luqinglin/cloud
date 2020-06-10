@@ -1,5 +1,7 @@
 package me.sta.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import me.sta.client.HelloService;
@@ -25,19 +27,24 @@ public class TestRestful {
     @HystrixCommand(fallbackMethod = "helloConsumerHandler", commandProperties = {
         @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2500")
     })
+    @SentinelResource(value="helloConsumer",blockHandler = "helloConsumerHandler")
     public String helloConsumer(@PathVariable("id") String id) {
-//        try {
-//            Thread.sleep(3000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return helloService.home(id,"2");
 //        if (id!="")
 //            throw new RuntimeException();
 //        return "sss";
     }
+
+    public String helloConsumerHandler(@PathVariable("id") String id, BlockException b) {
+        return "客户端降级处理了，sentinel方式";
+    }
     public String helloConsumerHandler(@PathVariable("id") String id) {
-        return "客户端降级处理了";
+        return "客户端降级处理了，hystrix";
     }
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)

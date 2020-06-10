@@ -13,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @EnableFeignClients
 @EnableEurekaClient
-@EnableHystrix
+//@EnableHystrix
 @ComponentScan("me.sta")
 @MapperScan("me.sta.dao")
 @EnableAutoConfiguration
