@@ -27,7 +27,7 @@ public class TestRestful {
     @HystrixCommand(fallbackMethod = "helloConsumerHandler", commandProperties = {
         @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2500")
     })
-    @SentinelResource(value="helloConsumer",blockHandler = "helloConsumerBlockHandler",fallback = "helloConsumerHandler")
+//    @SentinelResource(value="helloConsumer",blockHandler = "helloConsumerBlockHandler",fallback = "helloConsumerHandler")
     public String helloConsumer(@PathVariable("id") String id) {
 //        try {
 //            Thread.sleep(3000);
