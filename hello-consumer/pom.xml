@@ -36,6 +36,12 @@
 			<groupId>me.sta</groupId>
 			<artifactId>db-lcn</artifactId>
 			<version>1.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>io.github.openfeign</groupId>
+					<artifactId>feign-core</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 	</dependencies>

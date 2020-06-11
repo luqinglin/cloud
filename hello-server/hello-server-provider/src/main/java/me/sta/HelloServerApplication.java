@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 @EnableEurekaClient
-@EnableCircuitBreaker
+//@EnableCircuitBreaker
 @ComponentScan("me.sta")
 @MapperScan("me.sta.dao")
 @EnableAutoConfiguration

@@ -1,5 +1,7 @@
 package me.sta.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
@@ -33,6 +35,7 @@ public class TestRestful implements ServiceApi {
             @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"),
             @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60")
     })
+    @SentinelResource(value="helloServer",blockHandler = "homeBlockHandler",fallback = "homeHandler")
     @Override
     public String home(String username, String passwd) {
 //        try {
@@ -47,6 +50,10 @@ public class TestRestful implements ServiceApi {
 
         String s = "{\"id\":" + form + ",\"form1\":" + form1 + "," + " port:" + port + "}";
         return s;
+    }
+
+    public String homeBlockHandler(String username, String passwd, BlockException b) {
+        return "线程池：  " + Thread.currentThread().getName() + " homeBlockHandler";
     }
 
     public String homeHandler(String username, String passwd) {

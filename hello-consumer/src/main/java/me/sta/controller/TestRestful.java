@@ -27,23 +27,24 @@ public class TestRestful {
     @HystrixCommand(fallbackMethod = "helloConsumerHandler", commandProperties = {
         @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2500")
     })
-    @SentinelResource(value="helloConsumer",blockHandler = "helloConsumerHandler")
+    @SentinelResource(value="helloConsumer",blockHandler = "helloConsumerBlockHandler",fallback = "helloConsumerHandler")
     public String helloConsumer(@PathVariable("id") String id) {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        int a = 9/0;
         return helloService.home(id,"2");
 //        if (id!="")
 //            throw new RuntimeException();
 //        return "sss";
     }
 
-    public String helloConsumerHandler(@PathVariable("id") String id, BlockException b) {
+    public String helloConsumerBlockHandler(String id, BlockException block) {
         return "客户端降级处理了，sentinel方式";
     }
-    public String helloConsumerHandler(@PathVariable("id") String id) {
+    public String helloConsumerHandler(String id) {
         return "客户端降级处理了，hystrix";
     }
 
