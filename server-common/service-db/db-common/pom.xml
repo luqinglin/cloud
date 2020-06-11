@@ -5,7 +5,7 @@
 
 	<parent>
 		<groupId>me.sta</groupId>
-		<artifactId>cloud</artifactId>
+		<artifactId>service-db</artifactId>
 		<version>1.0</version>
 	</parent>
 

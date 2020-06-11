@@ -30,8 +30,6 @@ public class DynamicDataSourceAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(DynamicDataSourceAspect.class);
 
-    @Autowired
-
 
     /**
      * Dao aspect.
