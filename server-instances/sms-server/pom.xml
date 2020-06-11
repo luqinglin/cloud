@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>sms-server-entity</module>
+        <module>sms-server-service</module>
         <module>sms-server-api</module>
         <module>sms-server-provider</module>
         <module>sms-server-web</module>

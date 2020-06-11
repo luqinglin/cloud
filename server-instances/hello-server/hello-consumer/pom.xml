@@ -28,6 +28,12 @@
 
 		<dependency>
 			<groupId>me.sta</groupId>
+			<artifactId>sms-server-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>me.sta</groupId>
 			<artifactId>service-client</artifactId>
 			<version>1.0</version>
 		</dependency>

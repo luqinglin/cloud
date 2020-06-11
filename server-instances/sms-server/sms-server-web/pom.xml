@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>me.sta</groupId>
-            <artifactId>sms-server-provider</artifactId>
+            <artifactId>sms-server-service</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>

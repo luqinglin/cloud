@@ -5,6 +5,7 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import me.sta.client.HelloService;
+import me.sta.client.SmsService;
 import me.sta.helloservice.ServiceApi;
 import me.sta.service.IMessageProvider;
 import me.sta.service.TestService;
@@ -19,9 +20,15 @@ public class TestRestful {
     @Autowired
     HelloService helloService;
     @Autowired
+    SmsService smsService;
+    @Autowired
     IMessageProvider iMessageProvider;
     @Autowired
     TestService testService;
+    @RequestMapping(value = "/feign-consumer/sendMsg", method = RequestMethod.GET)
+    public void sendMsg(){
+        smsService.sendSmsWithoutTemplate("18911710751","11111");
+    }
 
     @RequestMapping(value = "/feign-consumer/{id}", method = RequestMethod.GET)
     @HystrixCommand(fallbackMethod = "helloConsumerHandler", commandProperties = {
