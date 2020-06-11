@@ -1,18 +1,14 @@
 package me.sta.sms.controller;
 
-import me.sta.sms.model.DataTable;
-import me.sta.sms.model.PageTable;
-import me.sta.sms.model.RestResult;
+import me.sta.sms.model.*;
 import me.sta.sms.pojo.CompanyModel;
-import me.sta.sms.send.CompanyTag;
-import me.sta.sms.send.SmsCompany;
 import me.sta.sms.service.CompanyModelService;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +21,7 @@ import java.util.List;
 @RequestMapping("/company")
 public class CompanyController {
 
-    @Autowired
+    @Resource
     CompanyModelService companyModelService;
 
 

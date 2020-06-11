@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
+
 /**
  * @CreateBy admin
  * @CreateTime 2019/7/18
@@ -21,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/logs")
 public class LogController {
 
-    @Autowired
+    @Resource
     LogModelService logModelService;
 
 

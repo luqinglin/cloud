@@ -2,8 +2,8 @@ package me.sta.sms.service;
 
 import me.sta.sms.model.PageTable;
 import me.sta.sms.pojo.CompanyModel;
-import me.sta.sms.send.CompanyTag;
-import me.sta.sms.send.SmsCompany;
+import me.sta.sms.model.CompanyTag;
+import me.sta.sms.model.SmsCompany;
 
 import java.util.List;
 

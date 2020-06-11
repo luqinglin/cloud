@@ -1,7 +1,7 @@
 package me.sta.sms.listener;
 
-import me.sta.sms.send.CompanyTag;
-import me.sta.sms.send.SmsCompany;
+import me.sta.sms.model.CompanyTag;
+import me.sta.sms.model.SmsCompany;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

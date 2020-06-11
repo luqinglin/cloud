@@ -1,8 +1,8 @@
 package me.sta.sms.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import me.sta.sms.model.SmsRequestModel;
 import me.sta.sms.model.SmsResultModel;
-import me.sta.sms.send.SmsRequestModel;
 import me.sta.sms.service.SmsSendService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

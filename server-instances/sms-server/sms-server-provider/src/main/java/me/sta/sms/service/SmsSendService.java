@@ -1,7 +1,7 @@
 package me.sta.sms.service;
 
 import me.sta.sms.model.SmsResultModel;
-import me.sta.sms.send.SmsRequestModel;
+import me.sta.sms.model.SmsRequestModel;
 
 /**
  * @CreateBy admin

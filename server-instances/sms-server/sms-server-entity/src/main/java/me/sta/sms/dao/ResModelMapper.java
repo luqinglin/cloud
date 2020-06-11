@@ -1,9 +1,10 @@
 package me.sta.sms.dao;
 
 import me.sta.sms.pojo.ResModel;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface ResModelMapper {
     int deleteByPrimaryKey(Long id);
 

@@ -15,6 +15,11 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class SmsServerWebApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        SpringApplication.run(SmsServerWebApplication.class, args);
+        try {
+            SpringApplication.run(SmsServerWebApplication.class, args);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

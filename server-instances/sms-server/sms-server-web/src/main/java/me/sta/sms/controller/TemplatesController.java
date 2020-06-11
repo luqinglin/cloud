@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+
 /**
  * @CreateBy admin
  * @CreateTime 2019/7/17
@@ -22,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/template")
 public class TemplatesController {
 
-    @Autowired
+    @Resource
     CompanyModelService companyModelService;
 
     @Autowired

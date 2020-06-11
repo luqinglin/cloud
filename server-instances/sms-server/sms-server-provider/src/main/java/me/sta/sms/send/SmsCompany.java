@@ -1,5 +1,6 @@
 package me.sta.sms.send;
 
+import me.sta.sms.model.CompanyTag;
 import me.sta.sms.model.SmsResultModel;
 import me.sta.sms.model.TemplateSendModel;
 

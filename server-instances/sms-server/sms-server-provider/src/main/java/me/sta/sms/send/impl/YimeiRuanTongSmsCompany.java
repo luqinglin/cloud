@@ -2,8 +2,8 @@ package me.sta.sms.send.impl;
 
 import me.sta.sms.model.SmsResultModel;
 import me.sta.sms.model.TemplateSendModel;
-import me.sta.sms.send.CompanyTag;
-import me.sta.sms.send.SmsCompany;
+import me.sta.sms.model.CompanyTag;
+import me.sta.sms.model.SmsCompany;
 import org.springframework.stereotype.Component;
 
 /**

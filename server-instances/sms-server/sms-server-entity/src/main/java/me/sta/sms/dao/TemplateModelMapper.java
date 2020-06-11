@@ -1,9 +1,11 @@
 package me.sta.sms.dao;
 
 import me.sta.sms.pojo.TemplateModel;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface TemplateModelMapper {
     int deleteByPrimaryKey(Integer id);
 
