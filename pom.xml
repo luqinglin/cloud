@@ -10,23 +10,10 @@
   <packaging>pom</packaging>
 
   <modules>
-    <!--base-->
-    <module>service-common</module>
-    <module>service-client</module>
-    <module>service-registry-server</module>
+    <module>server-common</module>
+    <module>server-registry</module>
+    <module>server-instances</module>
     <module>config-server</module>
-    <module>tx-manager</module>
-    <module>service-db</module>
-    <!--base-->
-    <module>hello-server</module>
-    <module>hello-consumer</module>
-    <module>sso-server</module>
-    <!-- sms -->
-    <module>sms-server</module>
-    <module>bytetcc-server</module>
-    <module>service-registry-zookeeper</module>
-    <module>service-gateway</module>
-
   </modules>
 
   <name>cloud</name>
