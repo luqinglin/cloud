@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.sta.sms.dao.ResModelMapper">
+  <resultMap id="BaseResultMap" type="me.sta.sms.pojo.ResModel">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="des" jdbcType="VARCHAR" property="des" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="iconCls" jdbcType="VARCHAR" property="iconcls" />
+    <result column="seq" jdbcType="BIGINT" property="seq" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="lastUpdAcct" jdbcType="VARCHAR" property="lastupdacct" />
+    <result column="lastUpdTime" jdbcType="TIMESTAMP" property="lastupdtime" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, `name`, des, url, `level`, iconCls, seq, `type`, status, lastUpdAcct, lastUpdTime,
+    note
+  </sql>
+
+  <select id="findLeftMenu" resultMap="BaseResultMap">
+    select * from sms_res
+    where pid=#{pid}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sms_res
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sms_res
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="me.sta.sms.pojo.ResModel">
+    insert into sms_res (id, pid, `name`,
+      des, url, `level`, iconCls,
+      seq, `type`, status, lastUpdAcct,
+      lastUpdTime, note)
+    values (#{id,jdbcType=BIGINT}, #{pid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
+      #{des,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{iconcls,jdbcType=VARCHAR},
+      #{seq,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{lastupdacct,jdbcType=VARCHAR},
+      #{lastupdtime,jdbcType=TIMESTAMP}, #{note,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="me.sta.sms.pojo.ResModel">
+    insert into sms_res
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="des != null">
+        des,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="iconcls != null">
+        iconCls,
+      </if>
+      <if test="seq != null">
+        seq,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="lastupdacct != null">
+        lastUpdAcct,
+      </if>
+      <if test="lastupdtime != null">
+        lastUpdTime,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="des != null">
+        #{des,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="iconcls != null">
+        #{iconcls,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null">
+        #{seq,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdacct != null">
+        #{lastupdacct,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdtime != null">
+        #{lastupdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.sta.sms.pojo.ResModel">
+    update sms_res
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="des != null">
+        des = #{des,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="iconcls != null">
+        iconCls = #{iconcls,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null">
+        seq = #{seq,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdacct != null">
+        lastUpdAcct = #{lastupdacct,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdtime != null">
+        lastUpdTime = #{lastupdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.sta.sms.pojo.ResModel">
+    update sms_res
+    set pid = #{pid,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      des = #{des,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      `level` = #{level,jdbcType=INTEGER},
+      iconCls = #{iconcls,jdbcType=VARCHAR},
+      seq = #{seq,jdbcType=BIGINT},
+      `type` = #{type,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      lastUpdAcct = #{lastupdacct,jdbcType=VARCHAR},
+      lastUpdTime = #{lastupdtime,jdbcType=TIMESTAMP},
+      note = #{note,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
