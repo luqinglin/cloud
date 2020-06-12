@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @Primary
-@ConditionalOnProperty(prefix = "spring.datasource.mode", havingValue = "sharding")
+@ConditionalOnProperty(name = "spring.datasource.mode", havingValue = "sharding")
 public class DataSourceShardingConfiguration {
 
 

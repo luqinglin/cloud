@@ -1,5 +1,6 @@
 package me.sta.sms.controller;
 
+import me.sta.sms.core.SmsCompany;
 import me.sta.sms.model.*;
 import me.sta.sms.pojo.CompanyModel;
 import me.sta.sms.service.CompanyModelService;
