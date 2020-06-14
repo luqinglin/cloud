@@ -16,5 +16,11 @@
 		<module>db-lcn</module>
 		<module>db-bytetcc</module>
 	</modules>
-
+	<dependencies>
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.12</version>
+		</dependency>
+	</dependencies>
 </project>

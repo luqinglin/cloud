@@ -55,22 +55,4 @@ public class TestSendSmsController {
         }
     }
 
-
-    public static void main(String[] args) {
-        SmsRequestModel smsRequestModel = new SmsRequestModel();
-        smsRequestModel.setTplNo("tpl_5ef74630acd6");
-        smsRequestModel.setPhoneNum("13811112222");
-        smsRequestModel.setTimestamp(new Date().getTime());
-        smsRequestModel.addParam("z").addParam("a").addParam("1");
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            String param = objectMapper.writeValueAsString(smsRequestModel);
-            System.out.println(param);
-            smsRequestModel = objectMapper.readValue(param, SmsRequestModel.class);
-            System.out.println(smsRequestModel.getTplNo());
-//            HttpUtil.sendPostRequestByParam("http://localhost:10092/sendSms", param);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

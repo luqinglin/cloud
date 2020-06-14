@@ -15,9 +15,15 @@
         <module>tx-manager</module>
         <!--base-->
         <module>hello-server</module>
-        <module>sso-server</module>
         <!-- sms -->
         <module>sms-server</module>
+        <module>user-server</module>
+<!--        <module>account-server</module>-->
+<!--        <module>product-server</module>-->
+<!--        <module>message-server</module>-->
+<!--        <module>product-server</module>-->
+<!--        <module>sms-server</module>-->
+<!--        <module>sms-server</module>-->
         <module>bytetcc-server</module>
         <module>service-gateway</module>
         <!--独立-->
