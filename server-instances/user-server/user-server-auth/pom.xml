@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>user-server</artifactId>
+        <groupId>me.sta</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>user-server-auth</artifactId>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>me.sta</groupId>
+            <artifactId>user-server-entity</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>me.sta</groupId>
+            <artifactId>user-server-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>me.sta</groupId>
+            <artifactId>service-client</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>me.sta</groupId>
+            <artifactId>db-common</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!--防止jks文件被mavne编译导致不可用-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>cert</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>jks</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
