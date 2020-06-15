@@ -17,7 +17,6 @@
             <groupId>me.sta</groupId>
             <artifactId>sms-server-entity</artifactId>
             <version>1.0</version>
-
         </dependency>
     </dependencies>
 </project>

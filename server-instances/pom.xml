@@ -18,7 +18,7 @@
         <!-- sms -->
         <module>sms-server</module>
         <module>user-server</module>
-<!--        <module>account-server</module>-->
+        <module>message-server</module>
 <!--        <module>product-server</module>-->
 <!--        <module>message-server</module>-->
 <!--        <module>product-server</module>-->

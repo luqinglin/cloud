@@ -20,9 +20,20 @@ public class UserControllerBase implements UserServiceBase {
     public RestResult register(@RequestParam("username") String username,
                                @RequestParam("password") String password){
         UserInfo user = userInfoService.insertUser(username, password);
+        if (user==null) return RestResult.buildError();
         UserInfoDto dto = new UserInfoDto();
         BeanUtils.copyProperties(user,dto);
         return RestResult.buildSuccess(dto);
     }
+
+    @Override
+    public UserInfoDto getUserInfoByName(String username) {
+        UserInfo user = userInfoService.getUserInfoByName(username);
+        if (user==null) return null;
+        UserInfoDto dto = new UserInfoDto();
+        BeanUtils.copyProperties(user,dto);
+        return dto;
+    }
+
 
 }

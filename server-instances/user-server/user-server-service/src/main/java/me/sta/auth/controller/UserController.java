@@ -3,6 +3,7 @@ package me.sta.auth.controller;
 import me.sta.auth.service.AuthServiceClient;
 import me.sta.auth.service.UserInfoService;
 import me.sta.dto.RestResult;
+import me.sta.user.dto.UserInfoDto;
 import me.sta.user.dto.UserLoginDTO;
 import me.sta.user.exception.UserLoginException;
 import me.sta.user.model.JWT;
@@ -36,6 +37,11 @@ public class UserController implements UserService {
                                 @RequestParam("password") String password) {
         RestResult user = userInfoService.register(username, password);
         return user;
+    }
+
+    @Override
+    public UserInfoDto getUserInfoByName(String username) {
+        return userInfoService.getUserInfoByName(username);
     }
 
 

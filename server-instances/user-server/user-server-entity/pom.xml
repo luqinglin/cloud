@@ -27,6 +27,20 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.12</version>
         </dependency>
+
+
+        <!--消息队列-->
+        <dependency>
+            <groupId>me.sta</groupId>
+            <artifactId>message-server-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>me.sta</groupId>
+            <artifactId>service-client</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 </project>

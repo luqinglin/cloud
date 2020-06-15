@@ -7,4 +7,6 @@ public interface UserInfoService {
 
     UserInfo insertUser(String username, String password);
 
+    UserInfo getUserInfoByName(String username);
+
 }

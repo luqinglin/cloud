@@ -1,5 +1,6 @@
 package me.sta;
 
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import tk.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @CreateTime 2019/7/16
  * @Description
  */
+@EnableFeignClients
 @EnableEurekaClient
 @MapperScan("me.sta.auth.dao")
 @SpringBootApplication
