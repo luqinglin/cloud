@@ -1,6 +1,6 @@
 package me.sta.message.dto;
 
-import me.sta.entity.BaseEntity;
+import me.sta.message.entity.BaseEntity;
 
 import java.util.List;
 

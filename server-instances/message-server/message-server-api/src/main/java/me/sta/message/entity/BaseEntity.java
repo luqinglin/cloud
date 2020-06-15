@@ -1,8 +1,12 @@
-package me.sta.entity;
+package me.sta.message.entity;
 
 
 import me.sta.utils.StringUtil;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,14 +19,22 @@ public class BaseEntity implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private String id = StringUtil.get32UUID();// 主键ID.
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private String id;// 主键ID.
+	@Column(name = "version")
 	private Integer version = 0;// 版本号默认为0
+	@Column(name = "status")
 	private String status;// 状态 PublicStatusEnum
+	@Column(name = "creater")
 	private String creater;// 创建人.
+	@Column(name = "create_time")
 	private Date createTime = new Date();// 创建时间.
+	@Column(name = "editor")
 	private String editor;// 修改人.
+	@Column(name = "edit_time")
 	private Date editTime;// 修改时间.
+	@Column(name = "remark")
 	private String remark;// 描述
 
 	public String getId() {

@@ -1,6 +1,6 @@
 package me.sta.message.entity;
 
-import me.sta.entity.BaseEntity;
+import javax.persistence.Column;
 
 /**
  * 持久化消息实体
@@ -12,23 +12,23 @@ import me.sta.entity.BaseEntity;
 public class RpTransactionMessage extends BaseEntity {
 
     private static final long serialVersionUID = 1757377457814546156L;
-
+    @Column(name = "message_id")
     private String messageId;
-
+    @Column(name = "message_body")
     private String messageBody;
-
+    @Column(name = "message_data_type")
     private String messageDataType;
-
+    @Column(name = "consumer_queue")
     private String consumerQueue;
-
+    @Column(name = "message_send_times")
     private Integer messageSendTimes;
-
+    @Column(name = "areadly_dead")
     private String areadlyDead;
-
+    @Column(name = "field1")
     private String field1;
-
+    @Column(name = "field2")
     private String field2;
-
+    @Column(name = "field3")
     private String field3;
 
     public RpTransactionMessage() {

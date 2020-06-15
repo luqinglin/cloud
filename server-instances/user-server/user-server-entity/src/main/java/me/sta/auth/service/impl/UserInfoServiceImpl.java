@@ -48,7 +48,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     private RpTransactionMessage sealRpTransactionMessage(String messageId,String username){
 
 
-        String messageBody = "{\"phone\":\""+username+"\",\"content\":\"短信消息队列测试"+messageId+"\"}";
+        String messageBody = "{\"phone\":\""+username+"\",\"content\":\"短信消息队列测试\",\"messageId\":\""+messageId+"\"}";
         RpTransactionMessage rpTransactionMessage = new RpTransactionMessage( messageId, messageBody, NotifyDestinationNameEnum.MESSAGE_NOTIFY.name());
         rpTransactionMessage.setField1(username); // 备用字段存储订单状态回查用的业务订单号
 
