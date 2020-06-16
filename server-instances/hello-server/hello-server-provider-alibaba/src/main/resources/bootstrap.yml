@@ -5,15 +5,15 @@ spring:
   application:
     name: helloAlibaba
   cloud:
-#    nacos:
-#      discovery:
-#        server-addr: localhost:8848
-#      config:
-#        server-addr: localhost:8848
-#        file-extension: yml
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+        file-extension: yml
     sentinel:
       transport:
         dashboard: localhost:8080
         port: 8719
-#  profiles:
-#    active: dev
+  profiles:
+    active: dev

@@ -1,6 +1,6 @@
 #### spring cloud 微服务框架体系学习搭建
 
-**技术选型**
+**使用的技术**
 * 核心框架：springboot 2.0.6.RELEASE
 * 微服务框架：spring-cloud Finchley.SR1
 * orm框架：mybatis 1.3.2、tkmybatis2.0.2
@@ -8,12 +8,14 @@
 * 缓存框架：redis
 * 调用监控：hystrix-dashboard
 * 调用链跟踪：zipkin
-* 配置中心：gitlab
+* 配置中心：gitlab、config、bus、apollo、nacos
 * 消息总线：rabbitmq
 * 服务降级：hystrix、sentinel
-* 数据源：mysql
+* 数据库：mysql
 * 数据库分片：sharding-jdbc
-
+* 服务注册：eureka、zookeeper
+* 服务请求：openfeign
+* 服务网关：gateway
 
 *项目为使用maven构建的多模块项目*
 
@@ -21,26 +23,34 @@
 **框架基础项目结构**
 （端口配置详见配置文件）
 
-├── cloud
-├── config-center // 配置中心
-│── config-server // 配置服务端 
-│── server-common // 服务常用组件 
-│ │ ├── common // 公共组件 
-
-│ │ ├── common // 公共组件 
-│ │ │ ├── alertTip.vue // 弹出框组件 
-│ │ │ ├── buyCart.vue // 购物车组件 
-│ │ │ ├── computeTime.vue // 倒计时组件
-* config-server    配置中心服务端
-* zipkin-stream-server    调用链跟踪服务端
-* hystrix-dashboard    熔断仪表盘
-* service-registry-server    服务注册中心
-* tx-manager    分布式事务管理器(LCN)
-
-* service-common    工具包
-* service-db    数据源基础配置包(分布式事务)
-* config-center 配置中心（独立于maven项目）
-
+* cloud
+    * config-center // 配置中心
+    * config-server // 配置服务端 
+    * server-common // 服务常用组件
+        * service-client //注册服务依赖包
+        * service-common //常用依赖集成包
+        * service-db     
+            * db-bytetcc //使用bytetcc依赖包
+            * db-common  //普通单机或者读写分离依赖包
+            * db-lcn     //使用lcn依赖包
+    * server-instances // 服务实例 
+        * apollo-test   //读取apollo配置文件实例
+        * bytetcc-server //使用bytetcc-server实例
+        * hello-server   //hello world 实例中心
+            * ...
+            * hello-server-provider-alibaba //使用阿里系的服务实例
+            * hello-server-provider-sharding //数据分片实例
+        * hystrix-dashboard //熔断仪表盘（同类型的sentinel使用官方jar包）
+        * message-server   //可靠消息服务
+        * service-gateway  //网关实例
+        * sms-server       //短信服务实例
+        * tx-manager       //lcn独立的事务管理器
+        * user-server      //用户类服（使用OAuth2+JWT）
+        * zipkin-stream-server //链路追踪
+    * server-registry //服务注册中心 （阿里的nacos无须自己搭建）
+        * service-registry-server eureka注册中心
+        * service-registry-zookeeper zookeeper 注册中心
+    
 **服务项目结构**
 （端口配置详见配置文件）
 * hello-server    服务端
@@ -73,20 +83,35 @@
    spring.rabbitmq.username=test
    spring.rabbitmq.password=test
     ```
-* 分布式事务管理器使用的是redis持久化
+* 分布式事务管理器和sentinel都是使用的是redis持久化
     ```
     #redis主机地址
     spring.redis.host=127.0.0.1
     #redis主机端口
     spring.redis.port=6379
+* 服务降级选择hystrix或者是senntinel使用下面配置进行切换
+    ```
+    #降级框架开关
+    feign.hystrix.enabled=false
+    ####################################
+    feign.sentinel.enabled=true
+    spring.cloud.sentinel.transport.dashboard=localhost:8080
+    spring.cloud.sentinel.transport.port=8719
+    ####################################
     ```
 * zipkin-stream-server调用链跟踪服务数据持久化使用的是mysql数据库，建表语句参考zipkin-stream-server项目下create.sql
-
+    ```
+    #链路追踪
+    spring.sleuth.sampler.probability=1
+    spring.zipkin.baseUrl=http://127.0.0.1:9110
+    spring.zipkin.encoder=json_v1
+    spring.zipkin.sender.type=web
+    ```
 * 分布式事务测试表，需要创建两个数据库,分别配置到hello-server-provider、hello-consumer，建表语句参考LCN-test.sql
   数据库配置则参考config-center配置中心
   
   
- *项目启动顺序*
+ *项目执行示例*
  （伪代码）
  
 1. 启动peer1服务注册中心（本服务注册到peer2服务上）
