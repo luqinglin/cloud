@@ -16,6 +16,12 @@
             <groupId>me.sta</groupId>
             <artifactId>message-server-api</artifactId>
             <version>1.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>tk.mybatis</groupId>
+                    <artifactId>mapper-spring-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>me.sta</groupId>

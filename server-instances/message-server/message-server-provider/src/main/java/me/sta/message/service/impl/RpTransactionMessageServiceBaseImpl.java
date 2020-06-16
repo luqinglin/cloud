@@ -44,7 +44,7 @@ public class RpTransactionMessageServiceBaseImpl implements RpTransactionMessage
         message.setStatus(MessageStatusEnum.WAITING_CONFIRM.name());
         message.setAreadlyDead(PublicEnum.NO.name());
         message.setMessageSendTimes(0);
-        return rpTransactionMessageDao.insert(message);
+        return rpTransactionMessageDao.insertSelective(message);
     }
 
 

@@ -21,7 +21,8 @@ public class BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;// 主键ID.
+	@Column(name = "id")
+	private Integer id;// 主键ID.
 	@Column(name = "version")
 	private Integer version = 0;// 版本号默认为0
 	@Column(name = "status")
@@ -37,11 +38,11 @@ public class BaseEntity implements Serializable {
 	@Column(name = "remark")
 	private String remark;// 描述
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

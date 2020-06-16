@@ -11,7 +11,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public RestResult register(String username, String password) {
-        return null;
+        return RestResult.buildError("注册失败");
     }
 
     @Override

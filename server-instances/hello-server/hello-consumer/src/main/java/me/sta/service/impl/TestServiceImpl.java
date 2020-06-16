@@ -22,7 +22,7 @@ public class TestServiceImpl implements TestService {
 
     @Override
     @Transactional
-    @TxTransaction(isStart = true)
+//    @TxTransaction(isStart = true)
     public void save(String name,Integer userId) {
         System.out.println(11);
 
@@ -30,7 +30,7 @@ public class TestServiceImpl implements TestService {
         test.setName(name);
         testMapper.insert(test);
 
-        helloService.save(name,userId);
+       // helloService.save(name,userId);
         //测试分布式事务
         // int a = 100/0;
         System.out.println(22);

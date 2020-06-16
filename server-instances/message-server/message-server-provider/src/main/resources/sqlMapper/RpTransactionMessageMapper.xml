@@ -5,7 +5,7 @@
     <sql id="table_name">rp_transaction_message</sql>
 
     <resultMap id="BaseResultMap" type="me.sta.message.entity.RpTransactionMessage">
-        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="version" property="version" jdbcType="SMALLINT"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="editor" property="editor" jdbcType="VARCHAR"/>

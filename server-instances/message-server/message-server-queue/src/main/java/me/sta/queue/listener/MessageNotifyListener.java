@@ -33,7 +33,7 @@ public class MessageNotifyListener {
         JSONObject jsonObject = JSONUtil.toBean(messageBody, JSONObject.class);
         String messageId = jsonObject.getStr("messageId");
         Boolean result = redisTemplate.opsForValue().setIfAbsent(NotifyDestinationNameEnum.MESSAGE_NOTIFY + ":" +
-                messageId, "1",5, TimeUnit.SECONDS);
+                messageId, "1");
         if (result){
             String phone = jsonObject.getStr("phone");
             String content = jsonObject.getStr("content");
