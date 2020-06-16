@@ -57,7 +57,7 @@
     * hello-server-api    系统服务api模块，定义服务端与客户端api标准
     * hello-server-entity    系统服务实体模块，定义服务所需model、dto、服务状态类
     * hello-server-provider  系统服务实现模块，针对api的实现
-* hello-consumer  服务客户端（消费端）
+    * hello-consumer  服务客户端（消费端）
 
 **项目使用**
 
