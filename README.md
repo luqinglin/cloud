@@ -3,13 +3,16 @@
 **技术选型**
 * 核心框架：springboot 2.0.6.RELEASE
 * 微服务框架：spring-cloud Finchley.SR1
-* orm框架：mybatis 1.3.2
-* 分布式事务：LCN框架（强一致性）
+* orm框架：mybatis 1.3.2、tkmybatis2.0.2
+* 分布式事务：LCN框架（强一致性）、bytetcc、可靠消息服务保证最终一致性
 * 缓存框架：redis
 * 调用监控：hystrix-dashboard
 * 调用链跟踪：zipkin
 * 配置中心：gitlab
 * 消息总线：rabbitmq
+* 服务降级：hystrix、sentinel
+* 数据源：mysql
+* 数据库分片：sharding-jdbc
 
 
 *项目为使用maven构建的多模块项目*
@@ -17,11 +20,23 @@
 
 **框架基础项目结构**
 （端口配置详见配置文件）
+
+├── cloud
+├── config-center // 配置中心
+│── config-server // 配置服务端 
+│── server-common // 服务常用组件 
+│ │ ├── common // 公共组件 
+
+│ │ ├── common // 公共组件 
+│ │ │ ├── alertTip.vue // 弹出框组件 
+│ │ │ ├── buyCart.vue // 购物车组件 
+│ │ │ ├── computeTime.vue // 倒计时组件
+* config-server    配置中心服务端
 * zipkin-stream-server    调用链跟踪服务端
 * hystrix-dashboard    熔断仪表盘
 * service-registry-server    服务注册中心
 * tx-manager    分布式事务管理器(LCN)
-* config-server    配置中心服务端
+
 * service-common    工具包
 * service-db    数据源基础配置包(分布式事务)
 * config-center 配置中心（独立于maven项目）
