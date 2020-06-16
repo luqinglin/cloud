@@ -45,7 +45,7 @@
         * service-gateway  //网关实例
         * sms-server       //短信服务实例
         * tx-manager       //lcn独立的事务管理器
-        * user-server      //用户类服（使用OAuth2+JWT）
+        * user-server      //用户认证服务（使用OAuth2+JWT）
         * zipkin-stream-server //链路追踪
     * server-registry //服务注册中心 （阿里的nacos无须自己搭建）
         * service-registry-server eureka注册中心
