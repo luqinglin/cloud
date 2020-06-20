@@ -4,6 +4,9 @@ spring:
   cloud:
     config:
       overrideNone: true
+    bus:
+      refresh:
+        enabled: true
     gateway:
       discovery:
         locator:
@@ -20,6 +23,12 @@ spring:
           uri: lb://helloServer
           predicates:
             - Path=/a/hello1**
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host: testmq
+    username: test
+    password: test
 server:
   port: 9527
   # 连接注册中心的服务地址
