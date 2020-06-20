@@ -16,7 +16,7 @@ spring:
           #          uri: http://localhost:10086
           uri: lb://helloServer
           predicates:
-            - Path=/a/hello0**
+            - Path=/a/hello**
 
         - id: routh1
           #          uri: http://localhost:10086
