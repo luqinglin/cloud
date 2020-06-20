@@ -4,7 +4,7 @@ import me.sta.auth.service.impl.UserInfoServiceImpl;
 import me.sta.user.service.UserServiceBase;
 import org.springframework.cloud.openfeign.FeignClient;
 
-@FeignClient(value = "auth-service", fallback = UserInfoServiceImpl.class)
+@FeignClient(value = "auth-service", fallbackFactory = UserInfoServiceImpl.class)
 public interface UserInfoService extends UserServiceBase {
 
 }

@@ -22,17 +22,31 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     @Transactional
     public UserInfo insertUser(String username, String  password){
-        //发送短信注册成功
+        //预发送短信注册成功
+      /*  String messageId = StringUtil.get32UUID();
+        int i = messageService.saveMessageWaitingConfirm(sealRpTransactionMessage(messageId, username));
+        if (i==1){
+            UserInfo userInfo = new UserInfo();
+            userInfo.setName(username);
+            userInfo.setPwd(BPwdEncoderUtil.BCryptPassword(password));
+            userRepository.insertSelective(userInfo);
+            messageService.confirmAndSendMessage(messageId);
+            return userInfo;
+        }else {
+            messageService.deleteMessageByMessageId(messageId);
+            return null;
+        }*/
+
+
         String messageId = StringUtil.get32UUID();
-        messageService.saveMessageWaitingConfirm(sealRpTransactionMessage(messageId,username));
 
         UserInfo userInfo = new UserInfo();
         userInfo.setName(username);
         userInfo.setPwd(BPwdEncoderUtil.BCryptPassword(password));
         userRepository.insertSelective(userInfo);
-
-        messageService.confirmAndSendMessage(messageId);
+//        messageService.directSendMessage(sealRpTransactionMessage(messageId, username));
         return userInfo;
+
     }
 
     @Override
