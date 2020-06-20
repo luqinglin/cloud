@@ -37,3 +37,10 @@ eureka:
     service-url:
       defaultZone: http://admin:123456@peer1:1111/eureka
 
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: *
