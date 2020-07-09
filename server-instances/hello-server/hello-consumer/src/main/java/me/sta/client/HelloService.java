@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 public interface HelloService extends ServiceApi{}
 
 
-
 /*@Component
 class HelloServiceFallBackFactory implements FallbackFactory<HelloService> {
     @Override

@@ -20,6 +20,9 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 解决参数注解无法继承问题
+ */
 @Configuration
 public class MyWebMvcConfigu implements BeanFactoryAware {
     private ConfigurableBeanFactory beanFactory;
